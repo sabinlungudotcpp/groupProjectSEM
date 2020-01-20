@@ -3,5 +3,5 @@ Jothanan Sung and Sadeem Rashid
 
 Sabin Constantin Lungu: 40397517
 Taylor Aidan Courtney: 40398643
-Jonathan Sung:
-Sadeem Rashid:
+Jonathan Sung: 40413556
+Sadeem Rashid: 40402246
