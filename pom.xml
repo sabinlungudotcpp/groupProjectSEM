@@ -28,7 +28,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.napier.sem.App</mainClass>
+                            <mainClass>com.grouproject.sem</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
