@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/grouproject-1.0-SNAPSHOT-jar-with-dependencies.jar /tmp
+COPY ./target/classes/com /tmp/com
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "grouproject-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "com.grouproject.sem.App"]
