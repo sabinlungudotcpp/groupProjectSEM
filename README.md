@@ -9,8 +9,11 @@ Sadeem Rashid: 40402246
 Code of Conduct
 1. All members must attend meetings
 2. Equal contributions to the coursework
-3. All members shall conduct your professional activities without discrimination on the grounds of sex, sexual orientation, marital status, nationality, colour, race, ethnic origin, religion, age or disability, or of any other condition or requirement
+3. No discrimination (racial, religion, gender etc.)
 4. Respect and value alternative viewpoints and, seek, accept and offer honest criticisms of work.
+5. Be polite to each other
+6. No distractions; all members must be fully focused on work
+7. All members must have the right tools to do the work (e.g. Docker, Travis, IntelliJ)
 
 - Master Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=master)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
 - Develop Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=develop)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
