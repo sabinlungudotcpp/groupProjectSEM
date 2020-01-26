@@ -1,4 +1,4 @@
-This is our group project: Sabin Constantin Lungu, Taylor Aidan Courtney,
+This is our group project: Sabin Constantin Lungu, Taylor Courtney,
 Jothanan Sung and Sadeem Rashid
 
 Sabin Constantin Lungu: 40397517
