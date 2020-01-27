@@ -1,5 +1,5 @@
 This is our group project: Sabin Constantin Lungu, Taylor Courtney,
-Jothanan Sung and Sadeem Rashid
+Jonathan Sung and Sadeem Rashid
 
 Sabin Constantin Lungu: 40397517
 Taylor Aidan Courtney: 40398643
