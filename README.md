@@ -15,6 +15,7 @@ Code of Conduct
 6. No distractions; all members must be fully focused on work
 7. All members must have the right tools to do the work (e.g. Docker, Travis, IntelliJ)
 
+
 - Master Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=master)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
 - Develop Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=develop)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
 - License [![LICENSE](https://img.shields.io/github/license/kevin-chalmers/sem.svg?style=flat-square)](https://github.com/kevin-chalmers/sem/blob/master/LICENSE)
