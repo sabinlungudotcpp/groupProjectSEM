@@ -1,11 +1,9 @@
-This is our group project: Sabin Constantin Lungu, Taylor Courtney,
-Jonathan Sung and Sadeem Rashid
 
 # Group Members
-Sabin Constantin Lungu: 40397517
-Taylor Aidan Courtney: 40398643
-Jonathan Sung: 40413556
-Sadeem Rashid: 40402246
+-> Sabin Constantin Lungu: 40397517
+-> Taylor Aidan Courtney: 40398643
+-> Jonathan Sung: 40413556
+-> Sadeem Rashid: 40402246
 
 # Purpose of Agile Group Project
 A "virtual company" gave us a long list of requirements to work through regarding the world population and in an agile environment, our group have to write SQL code embedded in Java by making use of the JDBC driver to solve the problems given to us. 
