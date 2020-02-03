@@ -1,10 +1,10 @@
-# USE CASE: 4 Produce a Report on the Salary of Employees of a Given Role
+# USE CASE: 4 Produce a report of the population of people, people living in cities, and people not living in cities in each region
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *HR advisor* I want *to produce a report on the salary of employees of a given role* so that *I can support financial reporting of the organisation.*
+As a *researcher*, I want a report of the population of people, people living in cities, and people not living in cities in each region so that the organisation is more informed about the data of the population.
 
 ### Scope
 
@@ -16,11 +16,11 @@ Primary task.
 
 ### Preconditions
 
-We know the role.  Database contains current employee salary data.
+We know the role.  Database contains current population data.
 
 ### Success End Condition
 
-A report is available for HR to provide to finance.
+A report is available for the researcher to provide to the rest of the organisation.
 
 ### Failed End Condition
 
@@ -28,11 +28,11 @@ No report is produced.
 
 ### Primary Actor
 
-HR Advisor.
+Researcher.
 
 ### Trigger
 
-A request for finance information is sent to HR.
+A request for population information is sent to the Researcher.
 
 ## MAIN SUCCESS SCENARIO
 
