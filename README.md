@@ -23,7 +23,7 @@ A "virtual company" gave us a long list of requirements to work through regardin
 
 
 # Build Statuses of Branches.
-- Master Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=master)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
+- Master Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project.svg?branch=master)](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project)
 - Develop Build Status [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=develop)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
 - License [![LICENSE](https://img.shields.io/github/license/kevin-chalmers/sem.svg?style=flat-square)](https://github.com/kevin-chalmers/sem/blob/master/LICENSE)
 - Release [![Build Status](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM.svg?branch=v0.1-alpha-2)](https://travis-ci.com/sabinlungudotcpp/groupProjectSEM)
