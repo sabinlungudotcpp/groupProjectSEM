@@ -1,10 +1,10 @@
-# USE CASE: Produce a report of the population data in each Capital City
+# USE CASE: Produce a report of the population data in a specified continent/region/country.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a *Researcher*, I want a report of the population data in each Capital City so that the organisation is more informed about the data of the population.
+As a *Researcher*, I want a report of the population data in a specified continent/region/country so that the organisation is more informed about the data of the population.
 
 ### Scope
 
@@ -36,15 +36,15 @@ A request for population information is sent to the Researcher.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Organisation requests population information for a given Capital City.
-2. Researcher captures the Capital City name to get population information for it.
-3. Researcher extracts current population information of the Capital City. 
+1. Organisation requests population information for a given continent/region/country.
+2. Researcher captures the continent/region/country name to get population information for it.
+3. Researcher extracts current population information of the continent/region/country. 
 4. Researcher provides report to the organisation.
 
 ## EXTENSIONS
 
 3. **Capital City does not exist**:
-    1. Researcher informs organisation no Capital City exists.
+    1. Researcher informs organisation no continent/region/country exists.
 
 ## SUB-VARIATIONS
 
