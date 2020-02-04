@@ -9,7 +9,7 @@ Jonathan Sung: 40413556
 Sadeem Rashid: 40402246
 
 # Purpose of Agile Group Project
-A "virtual company" gave us a long list of requirements to work through regarding the world population and in an agile environment, our group have to write SQL code embedded in Java by making use of the JDBC driver to solve the problems given to us. 
+A "virtual company" gave us a long list of requirements to work through regarding the world population and in an Agile Development Environment, our group have to write SQL code embedded in Java by making use of the Java Database Connectivity Driver (JDBC) to solve the requirements given to us and generate different reports for the company. 
 
 # Code Of Conduct
 
