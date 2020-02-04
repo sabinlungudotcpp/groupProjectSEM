@@ -1,0 +1,19 @@
+@startuml
+
+actor R1 as "Researcher"
+
+rectangle Database
+
+rectangle "Population System" {
+    usecase UC1 as "Enters country"
+    usecase UC2 as "Queries the database using
+    the country specified"
+    usecase UC3 as "Produce country report"
+
+    R1 --> UC1
+    UC1 --> UC2
+    UC2 --> Database
+    Database --> UC3 : returns population data
+}
+
+@enduml
