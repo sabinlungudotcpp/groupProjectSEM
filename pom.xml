@@ -28,7 +28,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.grouproject.sem</mainClass>
+                            <mainClass>com.grouproject.sem.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

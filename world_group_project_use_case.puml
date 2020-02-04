@@ -1,0 +1,7 @@
+@startuml
+
+actor researcher AS "Researcher"
+
+rectangle Database
+
+@enduml
