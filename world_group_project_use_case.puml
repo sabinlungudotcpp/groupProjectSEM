@@ -1,7 +1,25 @@
 @startuml
 
-actor researcher AS "Researcher"
+actor R1 as "Researcher"
 
 rectangle Database
+
+rectangle "Population System" {
+    usecase UC1 as "Enters continent/region/country
+    /city/capital_city "
+    usecase UC2 as "Generate query
+    using the input"
+    usecase UC3 as "Queries the database"
+    usecase UC4 as "Produce report"
+
+    R1 --> UC1
+    UC1 --> UC2
+    UC2 --> UC3
+    UC3 --> Database
+    Database --> UC4 : returns population data
+    UC4 --> R1 : displays report
+
+
+}
 
 @enduml
