@@ -60,20 +60,20 @@ public class App {
         }
     }
 
-    public City getAllCities(int ID) {
+    private City getAllCities(int ID) {
         try {
             Statement stmt = connection.createStatement();
 
-            String getCitiesString = "SELECT city.id, city.name "
+            String getCitiesString = "SELECT city.ID, city.Name "
                     + "FROM city "
-                    + "WHERE city.id = " + ID;
+                    + "WHERE city.ID = " + ID;
 
             ResultSet set = stmt.executeQuery(getCitiesString);
 
             if (set.next()) {
                 City city = new City();
-                city.cityId = set.getInt("cityId");
-                city.cityName = set.getString("cityName");
+                city.cityId = set.getInt("ID");
+                city.cityName = set.getString("Name");
                 return city;
 
             } else
