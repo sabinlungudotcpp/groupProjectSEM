@@ -1,7 +1,3 @@
 [submodule "db/world_db"]
 	path = db/world_db
-<<<<<<< HEAD
 	url = https://github.com/sabinlungudotcpp/db
-=======
-	url = https://github.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project/
->>>>>>> origin/master
