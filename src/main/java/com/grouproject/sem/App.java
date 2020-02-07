@@ -6,7 +6,15 @@ import java.sql.SQLException;
 
 public class App {
 
+    private Connection connection = null;
+
     public static void main(String[] args) {
+        App app = new App();
+        app.connect();
+        app.disconnect();
+    }
+
+    private void connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -16,9 +24,7 @@ public class App {
             System.exit(-1);
 
         }
-
-        Connection connection = null;
-
+        
         int retries = 100;
 
         for (int i = 0; i < retries; i++) {
@@ -37,14 +43,16 @@ public class App {
                 System.out.println("Thread failed");
             }
 
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (Exception e) {
-                    System.out.println("Error connecting to db");
-                }
+        }
+    }
+
+    private void disconnect() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                System.out.println("Error connecting to db");
             }
         }
-
     }
 }
