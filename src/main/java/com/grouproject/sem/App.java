@@ -1,8 +1,6 @@
 package com.grouproject.sem;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class App {
 
@@ -11,7 +9,13 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
         app.connect();
+
+        City city = app.getAllCities(10);
+
+        app.displayCityData(city);
+
         app.disconnect();
+
     }
 
     private void connect() {
@@ -24,7 +28,7 @@ public class App {
             System.exit(-1);
 
         }
-        
+
         int retries = 100;
 
         for (int i = 0; i < retries; i++) {
@@ -32,7 +36,7 @@ public class App {
 
             try {
                 Thread.sleep(20000);
-                connection = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                connection = DriverManager.getConnection("jdbc:mysql://db:3306/workld?useSSL=false", "root", "example");
                 System.out.println("Connect Success");
 
                 Thread.sleep(10000);
@@ -53,6 +57,38 @@ public class App {
             } catch (Exception e) {
                 System.out.println("Error connecting to db");
             }
+        }
+    }
+
+    public City getAllCities(int ID) {
+        try {
+            Statement stmt = connection.createStatement();
+
+            String getCitiesString = "SELECT city.id, city.name "
+                    + "FROM city "
+                    + "WHERE city.id = " + ID;
+
+            ResultSet set = stmt.executeQuery(getCitiesString);
+
+            if (set.next()) {
+                City city = new City();
+                city.cityId = set.getInt("cityId");
+                city.cityName = set.getString("cityName");
+                return city;
+
+            } else
+                return null;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city data");
+            return null;
+        }
+    }
+
+    private void displayCityData(City city) {
+        if (city != null) {
+            System.out.println(city.cityId + " " + city.cityName);
         }
     }
 }
