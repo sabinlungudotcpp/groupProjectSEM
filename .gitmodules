@@ -1,0 +1,3 @@
+[submodule "dbb/world_db"]
+	path = dbb/world_db
+	url = https://github.com/sabinlungudotcpp/world_db
