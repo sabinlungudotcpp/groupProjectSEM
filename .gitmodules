@@ -1,0 +1,3 @@
+[submodule "db/world_db"]
+	path = db/world_db
+	url = https://github.com/sabinlungudotcpp/db

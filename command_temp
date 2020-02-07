@@ -1,3 +1,0 @@
-git submodule add https://github.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project/database db/world_db
-git submodule init
-git submodule update
