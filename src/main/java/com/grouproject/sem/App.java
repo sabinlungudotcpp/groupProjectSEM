@@ -10,7 +10,7 @@ public class App {
         App app = new App();
         app.connect();
 
-        City city = app.getAllCities(10);
+        City city = app.getAllCities(14);
 
         app.displayCityData(city);
 
