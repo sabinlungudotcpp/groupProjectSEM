@@ -2,6 +2,11 @@ package com.grouproject.sem;
 
 import java.sql.*;
 
+// Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
+// Date of Last Modified: 7/02/2020
+// Purpose of Application: To write SQL queries embedded in Java code to retrieve the data required for the requirements.
+// Bugs?: Currently none
+
 public class App {
 
     private Connection connection = null;
@@ -10,9 +15,9 @@ public class App {
         App app = new App();
         app.connect();
 
-        City city = app.getAllCities(14);
+        City city = app.getAllCities(14); // Create a City instance and get the ID 14
 
-        app.displayCityData(city);
+        app.displayCityData(city); // Display the data for ID 14
 
         app.disconnect();
 
@@ -41,9 +46,13 @@ public class App {
 
                 Thread.sleep(10000);
                 break;
+
             } catch (SQLException exc) {
+
                 System.out.println("Failed to connect to DB. Attempt : " + i);
+
             } catch (InterruptedException e) {
+
                 System.out.println("Thread failed");
             }
 
@@ -62,8 +71,9 @@ public class App {
 
     private City getAllCities(int ID) {
         try {
-            Statement stmt = connection.createStatement();
+            Statement stmt = connection.createStatement(); // Create a connection statement
 
+            // String to get the City ID and name
             String getCitiesString = "SELECT city.ID, city.Name "
                     + "FROM city "
                     + "WHERE city.ID = " + ID;
@@ -71,24 +81,27 @@ public class App {
             ResultSet set = stmt.executeQuery(getCitiesString);
 
             if (set.next()) {
-                City city = new City();
-                city.cityId = set.getInt("ID");
-                city.cityName = set.getString("Name");
-                return city;
+
+                City city = new City(); // Create new instance of City
+                city.cityId = set.getInt("ID"); // Get the ID
+                city.cityName = set.getString("Name"); // Get the Name
+                return city; // Return the city
 
             } else
                 return null;
 
         } catch (Exception e) {
+
             System.out.println(e.getMessage());
             System.out.println("Failed to get city data");
             return null;
         }
     }
 
-    private void displayCityData(City city) {
-        if (city != null) {
-            System.out.println(city.cityId + " " + city.cityName);
+    private void displayCityData(City city) { // Routine to display the city data
+        if (city != null) { // If there currently is no city
+
+            System.out.println(city.cityId + " " + city.cityName); // Display the data
         }
     }
 }

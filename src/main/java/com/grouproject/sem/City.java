@@ -1,6 +1,6 @@
 package com.grouproject.sem;
 
-public class City {
+public class City { // City class that represents data in the database
     public int cityId;
     public String cityName;
     public int countryCode;
