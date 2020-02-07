@@ -36,7 +36,7 @@ public class App {
 
             try {
                 Thread.sleep(20000);
-                connection = DriverManager.getConnection("jdbc:mysql://db:3306/workld?useSSL=false", "root", "example");
+                connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
                 System.out.println("Connect Success");
 
                 Thread.sleep(10000);
