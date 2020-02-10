@@ -1,6 +1,7 @@
 package com.grouproject.sem;
 
 import java.sql.*;
+import java.util.Scanner;
 
 // Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
 // Date of Last Modified: 7/02/2020
@@ -10,15 +11,20 @@ import java.sql.*;
 public class App {
 
     private Connection connection = null;
+    static Scanner scanner = new Scanner(System.in); // Scanner object to ask for user input throughout the program
+
 
     public static void main(String[] args) {
         App app = new App();
         app.connect();
 
-        app.getAllCountriesOrderByPopulation();
+        //app.getAllCountriesOrderByPopulation();
+        System.out.println("Enter a continent please");
 
+        String userInput = scanner.next();
+      //  app.getContinentsByLargestPopulation(userInput);
 
-        app.disconnect();
+        app.disconnect(); // Disconnect from DB
 
     }
 
@@ -79,6 +85,30 @@ public class App {
                 System.out.println("Thread failed");
             }
 
+        }
+    }
+
+    private void getContinentsByLargestPopulation(String userInput, Scanner scanner) { // Requirement 2 code
+
+        try {
+
+            String myQuery ="SELECT * FROM country "
+                    + " WHERE Continent = " + userInput
+                    + " ORDER BY country.Population DESC ";
+
+            Statement stmt = connection.createStatement(); // Create a connection statement
+            ResultSet set = stmt.executeQuery(myQuery);
+
+            while(scanner.hasNext()) {
+                Country country = new Country();
+                country.code = set.getString("Code");
+                country.name = set.getString("Name");
+                country.population = set.getInt("Population"); // Get the population
+
+            }
+
+        } catch (SQLException exc) { // Catch exception
+            System.out.println(exc.toString());
         }
     }
 

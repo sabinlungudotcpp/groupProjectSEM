@@ -1,11 +1,11 @@
 package com.grouproject.sem;
 
 public enum Continent {
-    Asia,
-    Europe,
-    North_America,
-    Africa,
-    Oceania,
-    Antarctica,
-    South_America
-}
+    ASIA,
+    EUROPE,
+    NORTH_AMERICA,
+    AFRICA,
+    OCEANIA,
+    ANTARTICA,
+    SOUTH_AMERICA
+    }
