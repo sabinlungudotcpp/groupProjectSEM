@@ -78,7 +78,10 @@ public class App {
                     + "FROM city "
                     + "WHERE city.ID = " + ID;
 
-            ResultSet set = stmt.executeQuery(getCitiesString);
+            //Jonathan's test query
+            String myquery ="SELECT * FROM country";
+
+            ResultSet set = stmt.executeQuery(myquery);
 
             if (set.next()) {
 
