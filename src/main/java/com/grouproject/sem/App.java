@@ -15,9 +15,6 @@ public class App {
         App app = new App();
         app.connect();
 
-        City city = app.getAllCities(14); // Create a City instance and get the ID 14
-
-        app.displayCityData(city); // Display the data for ID 14
         app.getAllCountriesOrderByPopulation();
 
 
@@ -25,22 +22,31 @@ public class App {
 
     }
 
-    private void getAllCountriesOrderByPopulation(){
+    private void getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
         try {
-        //Jonathan's test query
-        String myquery ="SELECT * FROM country";
+
+        String myQuery ="SELECT country.code, country.Name, country.Population "
+                + "FROM country " +
+                "ORDER BY country.Population DESC ";
+
         Statement stmt = connection.createStatement(); // Create a connection statement
-        ResultSet set = stmt.executeQuery(myquery);
+        ResultSet set = stmt.executeQuery(myQuery);
+
             while (set.next()) {
-                System.out.println(set.getString("Name"));
+                Country country = new Country();
+                country.code = set.getString("Code");
+                country.name = set.getString("Name");
+                country.population = set.getInt("Population"); // Get the population
+
+                System.out.println(country.toString()); // Print all the data out
             }
 
-        } catch (SQLException exc) {
+        } catch (SQLException exc) { // Catch exception
             System.out.println(exc.toString());
         }
     }
 
-    private void connect() {
+    private void connect() { // Routine to connect to the DB
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -114,13 +120,6 @@ public class App {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city data");
             return null;
-        }
-    }
-
-    private void displayCityData(City city) { // Routine to display the city data
-        if (city != null) { // If there currently is no city
-
-            System.out.println(city.cityId + " " + city.cityName); // Display the data
         }
     }
 }

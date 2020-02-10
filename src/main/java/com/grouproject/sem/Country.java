@@ -4,6 +4,7 @@ public class Country {
     public String code;
     public String name;
     public Continent continent;
+    public int population;
     /*
             `Region` char(26) NOT NULL DEFAULT '',
             `SurfaceArea` decimal(10,2) NOT NULL DEFAULT '0.00',
@@ -19,4 +20,8 @@ public class Country {
             `Code2` char(2) NOT NULL DEFAULT '',
 
      */
+
+    public String toString() {
+        return this.code + ", " + this.name + ", " + this.population;
+    }
 }
