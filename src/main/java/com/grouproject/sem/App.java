@@ -18,9 +18,26 @@ public class App {
         City city = app.getAllCities(14); // Create a City instance and get the ID 14
 
         app.displayCityData(city); // Display the data for ID 14
+        app.getAllCountriesOrderByPopulation();
+
 
         app.disconnect();
 
+    }
+
+    private void getAllCountriesOrderByPopulation(){
+        try {
+        //Jonathan's test query
+        String myquery ="SELECT * FROM country";
+        Statement stmt = connection.createStatement(); // Create a connection statement
+        ResultSet set = stmt.executeQuery(myquery);
+            while (set.next()) {
+                System.out.println(set.getString("Name"));
+            }
+
+        } catch (SQLException exc) {
+            System.out.println(exc.toString());
+        }
     }
 
     private void connect() {
@@ -78,10 +95,9 @@ public class App {
                     + "FROM city "
                     + "WHERE city.ID = " + ID;
 
-            //Jonathan's test query
-            String myquery ="SELECT * FROM country";
 
-            ResultSet set = stmt.executeQuery(myquery);
+
+            ResultSet set = stmt.executeQuery(getCitiesString);
 
             if (set.next()) {
 
