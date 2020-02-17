@@ -1,0 +1,27 @@
+
+
+@startuml
+
+actor R1 as "Researcher"
+
+
+rectangle "Population System" {
+    usecase UC1 as "Produce a report of the population data
+     in each Country"
+    usecase UC2 as "Produce a report of the population data
+    in a specified continent/region/country"
+    usecase UC3 as "Produce a report of the population data
+     in each City"
+    usecase UC4 as "Produce a report of the population data
+    in each Capital City"
+
+    R1 --> UC1
+    R1 --> UC2
+    R1 --> UC3
+    R1 --> UC4
+
+
+
+}
+
+@enduml
