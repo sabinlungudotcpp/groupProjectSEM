@@ -4,7 +4,7 @@ public class Country { // Country class
     public String code;
     public String name;
     public String region;
-    public Continent continent;
+    public Continent continent; // Continent enum
     public int population;
 
 
