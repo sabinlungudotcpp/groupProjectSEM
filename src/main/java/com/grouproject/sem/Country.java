@@ -17,7 +17,7 @@ public class Country { // Country class
     public int Capital;
     public String code2;
 
-    public Country() {
+    public Country() { // Default constructor
 
     }
 
@@ -35,12 +35,12 @@ public class Country { // Country class
         this.localName = localName;
         this.governmentForm = governmentForm;
         this.headOfState = headOfState;
-        Capital = capital;
+        this.Capital = capital;
         this.code2 = code2;
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {

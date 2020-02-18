@@ -15,14 +15,10 @@ public class App {
 
     public static void main(String[] args) {
         App app = new App();
-        listOfRegions = new ArrayList<String>();
+
         app.connect();
-
+        listOfRegions = new ArrayList<String>();
         listOfRegions = app.extractRegions();
-
-        for (String region : listOfRegions) {
-            System.out.println(region);
-        }
 
 
         //app.printCountries(app.getAllCountriesOrderByPopulation());
@@ -37,8 +33,8 @@ public class App {
     }
 
     private void printCountries(ArrayList<Country> countries) {
-        for (Country c : countries) {
-            System.out.println(c.toString());
+        for (Country theCountries : countries) {
+            System.out.println(theCountries.toString());
         }
     }
 
@@ -66,12 +62,13 @@ public class App {
         String myQuery = "SELECT * FROM country "
                 + " WHERE Region = '" + region
                 + "' ORDER BY country.Population DESC ";
+
         return extractCountryData(myQuery);
     }
 
     private ArrayList<Country> extractCountryData(String query) {
         try {
-            // Test comment
+
             ArrayList<Country> temp_countries = new ArrayList<Country>();
             Statement stmt = connection.createStatement(); // Create a connection statement
             ResultSet set = stmt.executeQuery(query);
@@ -80,9 +77,11 @@ public class App {
                 Country country = new Country(set.getString("Code"), set.getString("Name"), set.getString("Continent"),
                         set.getString("Region"), set.getFloat("SurfaceArea"), set.getInt("IndepYear"),
                         set.getInt("Population"), set.getFloat("LifeExpectancy"), set.getFloat("GNP"),
+
                         set.getFloat("GNPOld"), set.getString("LocalName"), set.getString("GovernmentForm"),
                         set.getString("HeadOfState"), set.getInt("Capital"), set.getString("Code2"));
                 temp_countries.add(country);
+
                 //System.out.println(country.toString()); // Print all the data out
             }
             return temp_countries;
@@ -93,10 +92,12 @@ public class App {
         }
     }
 
-    private ArrayList<String> extractRegions() {
+    private ArrayList<String> extractRegions() { // Returns a list of regions
         ArrayList<String> temp_regions = new ArrayList<String>();
+
         try {
-            String myQuery = "SELECT DISTINCT Region FROM country ";
+
+            String myQuery = "SELECT DISTINCT Region FROM country "; // SQL query to get the region
             Statement stmt = connection.createStatement(); // Create a connection statement
             ResultSet set = stmt.executeQuery(myQuery);
 
@@ -104,6 +105,7 @@ public class App {
                 String region = set.getString("Region");
                 temp_regions.add(region);
             }
+
             return temp_regions;
 
         } catch (SQLException exc) { // Catch exception
@@ -112,7 +114,7 @@ public class App {
         }
     }
 
-    private void disconnect() {
+    private void disconnect() { // Routine to disconnect from the DB
         if (connection != null) {
             try {
 
