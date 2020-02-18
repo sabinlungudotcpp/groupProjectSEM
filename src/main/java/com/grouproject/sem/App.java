@@ -17,14 +17,13 @@ public class App {
         App app = new App();
         listOfRegions = new ArrayList<String>();
         app.connect();
-/*
-        app.getRegions();
+
+        listOfRegions = app.extractRegions();
 
         for (String region : listOfRegions) {
             System.out.println(region);
         }
 
- */
 
         //app.printCountries(app.getAllCountriesOrderByPopulation());
         app.printCountries(app.getCountriesInContinentByLargestPopulation(Continent.NORTH_AMERICA));
@@ -46,6 +45,28 @@ public class App {
     private ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
         String query = "SELECT * FROM country ORDER BY country.Population DESC";
         return extractCountryData(query);
+    }
+
+    private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
+        String myQuery = "SELECT * FROM country "
+                + " WHERE Continent = '" + continent.getContinent()
+                + "' ORDER BY country.Population DESC ";
+        return extractCountryData(myQuery);
+    }
+
+    private ArrayList<Country> getTopNCountriesOrderByPopulation(int n) { // Routine that gets the SQL query results for the first Requirement
+        String myQuery = "SELECT * "
+                + "FROM country "
+                + "ORDER BY country.Population DESC "
+                + "LIMIT " + n;
+        return extractCountryData(myQuery);
+    }
+
+    private ArrayList<Country> getCountriesInRegionByLargestPopulation(String region) { // Requirement 2 code
+        String myQuery = "SELECT * FROM country "
+                + " WHERE Region = '" + region
+                + "' ORDER BY country.Population DESC ";
+        return extractCountryData(myQuery);
     }
 
     private ArrayList<Country> extractCountryData(String query) {
@@ -72,6 +93,36 @@ public class App {
         }
     }
 
+    private ArrayList<String> extractRegions() {
+        ArrayList<String> temp_regions = new ArrayList<String>();
+        try {
+            String myQuery = "SELECT DISTINCT Region FROM country ";
+            Statement stmt = connection.createStatement(); // Create a connection statement
+            ResultSet set = stmt.executeQuery(myQuery);
+
+            while (set.next()) {
+                String region = set.getString("Region");
+                temp_regions.add(region);
+            }
+            return temp_regions;
+
+        } catch (SQLException exc) { // Catch exception
+            System.out.println(exc.toString());
+            return null;
+        }
+    }
+
+    private void disconnect() {
+        if (connection != null) {
+            try {
+
+                connection.close();
+            } catch (Exception e) {
+                System.out.println("Error connecting to db");
+            }
+        }
+    }
+
     private void connect() { // Routine to connect to the DB
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -93,7 +144,7 @@ public class App {
                 connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
                 System.out.println("Connect Success");
 
-                Thread.sleep(10000);
+                Thread.sleep(1000);
                 break;
 
             } catch (SQLException exc) {
@@ -105,124 +156,6 @@ public class App {
                 System.out.println("Thread failed");
             }
 
-        }
-    }
-
-    private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
-            String myQuery = "SELECT * FROM country "
-                    + " WHERE Continent = '" + continent.getContinent()
-                    + "' ORDER BY country.Population DESC ";
-        return extractCountryData(myQuery);
-    }
-
-    private void getCountriesInRegionByLargestPopulation(String region) { // Requirement 2 code
-
-        try {
-
-            String myQuery = "SELECT * FROM country "
-                    + " WHERE Region = '" + region
-                    + "' ORDER BY country.Population DESC ";
-
-            Statement stmt = connection.createStatement(); // Create a connection statement
-            ResultSet set = stmt.executeQuery(myQuery);
-
-            while (set.next()) {
-                Country country = new Country();
-                country.code = set.getString("Code");
-                country.name = set.getString("Name");
-                country.region = set.getString("Region");
-                country.population = set.getInt("Population"); // Get the population
-                System.out.println(country.toString()); // Print all the data out
-            }
-
-        } catch (SQLException exc) { // Catch exception
-            System.out.println(exc.toString());
-        }
-    }
-
-    private void getRegions() {
-
-        try {
-
-            String myQuery = "SELECT DISTINCT Region FROM country ";
-
-            Statement stmt = connection.createStatement(); // Create a connection statement
-            ResultSet set = stmt.executeQuery(myQuery);
-
-            while (set.next()) {
-                String region = set.getString("Region");
-                listOfRegions.add(region);
-            }
-
-        } catch (SQLException exc) { // Catch exception
-            System.out.println(exc.toString());
-        }
-    }
-
-    private void disconnect() {
-        if (connection != null) {
-            try {
-
-                connection.close();
-            } catch (Exception e) {
-                System.out.println("Error connecting to db");
-            }
-        }
-    }
-
-    private City getAllCities(int ID) {
-        try {
-            Statement stmt = connection.createStatement(); // Create a connection statement
-
-            // String to get the City ID and name
-            String getCitiesString = "SELECT city.ID, city.Name "
-                    + "FROM city "
-                    + "WHERE city.ID = " + ID;
-
-
-            ResultSet set = stmt.executeQuery(getCitiesString);
-
-            if (set.next()) {
-
-                City city = new City(); // Create new instance of City
-                city.id = set.getInt("ID"); // Get the ID
-                city.name = set.getString("Name"); // Get the Name
-                return city; // Return the city
-
-            } else
-                return null;
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get city data");
-            return null;
-        }
-    }
-
-    private void getTopNCountriesOrderByPopulation(int n) { // Routine that gets the SQL query results for the first Requirement
-        try {
-
-            String myQuery = "SELECT * "
-                    + "FROM country "
-                    + "ORDER BY country.Population DESC "
-                    + "LIMIT " + n;
-
-            Statement stmt = connection.createStatement(); // Create a connection statement
-            ResultSet set = stmt.executeQuery(myQuery);
-
-            while (set.next()) {
-                Country country = new Country();
-                country.code = set.getString("Code");
-                country.name = set.getString("Name");
-                country.region = set.getString("Region");
-                country.population = set.getInt("Population"); // Get the population
-
-                System.out.println(country.toString()); // Print all the data out
-            }
-
-        } catch (SQLException exc) { // Catch exception
-            System.out.println(exc.toString());
         }
     }
 }
