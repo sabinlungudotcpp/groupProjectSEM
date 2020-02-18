@@ -2,8 +2,6 @@ package com.grouproject.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Scanner;
 
 // Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
 // Date of Last Modified: 7/02/2020
@@ -46,6 +44,7 @@ public class App {
 
     private ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
         try {
+            // Test comment
             ArrayList<Country> temp_countries = new ArrayList<Country>();
             String myQuery = "SELECT * FROM country ORDER BY country.Population DESC";
             Statement stmt = connection.createStatement(); // Create a connection statement
