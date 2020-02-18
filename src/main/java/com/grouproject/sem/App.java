@@ -19,46 +19,58 @@ public class App {
         App app = new App();
         listOfRegions = new ArrayList<String>();
         app.connect();
-
+/*
         app.getRegions();
 
         for (String region : listOfRegions) {
             System.out.println(region);
         }
 
-        //app.getAllCountriesOrderByPopulation();
+ */
+
+        app.printCountries(app.getAllCountriesOrderByPopulation());
         //app.getCountriesInContinentByLargestPopulation(Continent.NORTH_AMERICA);
         //app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
-        app.getTopNCountriesOrderByPopulation(3);
+        //app.getTopNCountriesOrderByPopulation(3);
 
 
         app.disconnect(); // Disconnect from DB
 
     }
 
-    private void getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
+    private void printCountries(ArrayList<Country> countries){
+        for (Country c : countries){
+            System.out.println(c.toString());
+        }
+    }
+
+    private ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
         try {
-
-            String myQuery = "SELECT * "
-                    + "FROM country " +
-                    "ORDER BY country.Population DESC ";
-
+            ArrayList<Country> temp_countries = new ArrayList<Country>();
+            String myQuery = "SELECT * FROM country ORDER BY country.Population DESC";
             Statement stmt = connection.createStatement(); // Create a connection statement
             ResultSet set = stmt.executeQuery(myQuery);
 
             while (set.next()) {
-                Country country = new Country();
-                country.code = set.getString("Code");
-                country.name = set.getString("Name");
-                country.region = set.getString("Region");
-                country.population = set.getInt("Population"); // Get the population
-
-                System.out.println(country.toString()); // Print all the data out
+                Country country = new Country(set.getString("Code"), set.getString("Name"), set.getString("Continent"),
+                        set.getString("Region"),set.getFloat("SurfaceArea"), set.getInt("IndepYear"),
+                        set.getInt("Population"), set.getFloat("LifeExpectancy"),set.getFloat("GNP"),
+                        set.getFloat("GNPOld"),set.getString("LocalName"),set.getString("GovernmentForm"),
+                        set.getString("HeadOfState"),set.getInt("Capital"),set.getString("Code2"));
+                temp_countries.add(country);
+                //System.out.println(country.toString()); // Print all the data out
             }
+            return temp_countries;
 
         } catch (SQLException exc) { // Catch exception
             System.out.println(exc.toString());
+            return null;
         }
+    }
+
+    public void extractCountryData(ResultSet set){
+
+
     }
 
     private void connect() { // Routine to connect to the DB
@@ -193,8 +205,8 @@ public class App {
             if (set.next()) {
 
                 City city = new City(); // Create new instance of City
-                city.cityId = set.getInt("ID"); // Get the ID
-                city.cityName = set.getString("Name"); // Get the Name
+                city.id = set.getInt("ID"); // Get the ID
+                city.name = set.getString("Name"); // Get the Name
                 return city; // Return the city
 
             } else
