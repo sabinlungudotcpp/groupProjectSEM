@@ -28,7 +28,9 @@ public class App {
 
         // app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
         //app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
-        app.printCities(app.getAllCitiesInACountry("Germany"));
+        // app.printCities(app.getAllCitiesInACountry("Germany"));
+
+        app.printCities(app.getAllCitiesInADistrict("Kabol"));
 
 
         app.disconnect(); // Disconnect from DB
