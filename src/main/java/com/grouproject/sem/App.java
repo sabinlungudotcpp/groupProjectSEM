@@ -26,7 +26,7 @@ public class App {
        // app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //app.printCountries(app.getTopNCountriesOrderByPopulation(3));
 
-        app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
+        // app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
         app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
 
 
@@ -103,7 +103,7 @@ public class App {
                 " WHERE region = '" + theRegion +
                 "' ORDER BY country.region DESC "; // The query to get it.
 
-        return extractCityData(theRegion);
+        return extractCityData(query);
     }
 
     private ArrayList<Country> extractCountryData(String query) {
