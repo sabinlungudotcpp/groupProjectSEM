@@ -27,7 +27,8 @@ public class App {
         //app.printCountries(app.getTopNCountriesOrderByPopulation(3));
 
         // app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
-        app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
+        //app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
+        app.printCities(app.getAllCitiesInACountry("Germany"));
 
 
         app.disconnect(); // Disconnect from DB
