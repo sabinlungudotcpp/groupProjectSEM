@@ -2,6 +2,7 @@ package com.grouproject.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 // Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
 // Date of Last Modified: 7/02/2020
@@ -30,8 +31,11 @@ public class App {
         //app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         // app.printCities(app.getAllCitiesInACountry("Germany"));
 
-        app.printCities(app.getAllCitiesInADistrict("Kabol"));
+        //app.printCities(app.getAllCitiesInADistrict("Kabol"));
 
+        Scanner in = new Scanner(System.in);
+        String s = in.nextLine();
+        System.out.println("String:" + s);
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
@@ -45,15 +49,16 @@ public class App {
     }
 
     private void printCities(ArrayList<City> cities) {
-        Object[][] cityTable = new String[cities.size()+1][];
+        Object[][] cityTable = new String[cities.size()][];
 
-        cityTable[0] = new String[] { "ID", "Name", "CountryCode", "District", "Population" };
+        String[] header = new String[]{"ID", "Name", "CountryCode", "District", "Population"};
 
-        for (int i = 1; i < cities.size(); i++) {
+        for (int i = 0; i < cities.size(); i++) {
 
             cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(), cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
         }
 
+        System.out.format("%25s%25s%25s%25s%25s\n", header);
         for (final Object[] row : cityTable) {
             System.out.format("%25s%25s%25s%25s%25s\n", row);
         }
