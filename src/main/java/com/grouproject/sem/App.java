@@ -116,6 +116,15 @@ public class App {
         return extractCityData(query);
     }
 
+    private ArrayList<City> getAllCitiesInADistrict(String theDistrict) {
+        String query = "SELECT * FROM city" +
+                " JOIN country ON (city.CountryCode = country.code)" +
+                " WHERE city.District = '" + theDistrict +
+                "' ORDER BY city.population DESC ";
+
+        return extractCityData(query);
+    }
+
     private ArrayList<Country> extractCountryData(String query) {
         try {
 
