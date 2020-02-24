@@ -25,17 +25,29 @@ public class App {
         //app.printCountries(app.getAllCountriesOrderByPopulation());
        // app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
        // app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
-        //app.getTopNCountriesOrderByPopulation(3);
+        //app.printCountries(app.getTopNCountriesOrderByPopulation(3));
 
-        app.getAllCitiesInAContinent(Continent.NORTH_AMERICA);
+        app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
 
 
         app.disconnect(); // Disconnect from DB
+        System.out.println("End of program.");
     }
 
     private void printCountries(ArrayList<Country> countries) {
-        for (Country theCountries : countries) {
-            System.out.println(theCountries.toString());
+        for (Country country : countries) {
+            System.out.println(country.toString());
+        }
+    }
+
+    private void printCities(ArrayList<City> cities) {
+        Object[][] cityTable = new String[cities.size()+1][];
+        cityTable[0] = new String[] { "ID", "Name", "CountryCode", "District", "Population" };
+        for (int i = 0; i < cities.size() - 1; i++) {
+            cityTable[i + 1] = new String[] { String.valueOf(cities.get(i).getId()), cities.get(i).getName(), cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation()) };
+        }
+        for (final Object[] row : cityTable) {
+            System.out.format("%25s%25s%25s%25s%25s\n", row);
         }
     }
 
@@ -44,7 +56,7 @@ public class App {
         return extractCountryData(query);
     }
 
-    private ArrayList<Country> getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent continent) { // Requirement 2 code
+    private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
         String myQuery = "SELECT * FROM country "
                 + " WHERE Continent = '" + continent.getContinent()
                 + "' ORDER BY country.Population DESC ";
@@ -67,9 +79,9 @@ public class App {
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<City> getAllCitiesInAContinent(com.grouproject.sem.Continent continent) {
-
-        return null;
+    private ArrayList<City> getAllCitiesInAContinent(Continent continent) {
+        String query = "SELECT * FROM city ORDER BY city.population DESC;";
+        return extractCityData(query);
     }
 
     private ArrayList<Country> extractCountryData(String query) {
@@ -106,8 +118,10 @@ public class App {
             ResultSet set = statement.executeQuery(query);
 
              while(set.next()) {
-                 City city = new City(set.getInt("ID"), set.getString("Name"), set.getString("CountryCode"),
-                         set.getString("District"), set.getInt("Population"));
+                 City city = new City(set.getInt("ID"), set.getString("Name"),
+                         set.getString("CountryCode"),
+                         set.getString("District"),
+                         set.getInt("Population"));
 
                  tempCities.add(city);
              }
@@ -175,11 +189,9 @@ public class App {
             System.out.println("Connecting to DB...");
 
             try {
-                Thread.sleep(20000);
+                Thread.sleep(1000);
                 connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
                 System.out.println("Connect Success");
-
-                Thread.sleep(1000);
                 break;
 
             } catch (SQLException exc) {
