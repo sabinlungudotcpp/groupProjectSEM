@@ -59,14 +59,10 @@ public class City { // City class that represents data in the database
         this.population = population;
     }
 
+
+
     @Override
     public String toString() {
-        return "City{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", countryCode='" + countryCode + '\'' +
-                ", district='" + district + '\'' +
-                ", population=" + population +
-                '}';
+       return " ID " + this.id + " Name " + this.name + " Country Code "  + this.countryCode + " District " + this.district + " Population " + this.population;
     }
 }
