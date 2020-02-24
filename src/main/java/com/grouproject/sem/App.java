@@ -30,7 +30,7 @@ public class App {
         //app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         // app.printCities(app.getAllCitiesInACountry("Germany"));
 
-        app.printCities(app.getAllCitiesInADistrict("Colorado"));
+        app.printCities(app.getAllCitiesInADistrict("Kabol"));
 
 
         app.disconnect(); // Disconnect from DB
