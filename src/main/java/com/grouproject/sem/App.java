@@ -24,10 +24,10 @@ public class App {
 
         //app.printCountries(app.getAllCountriesOrderByPopulation());
        // app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
-        app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
+       // app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //app.getTopNCountriesOrderByPopulation(3);
 
-        //app.getAllCitiesInAContinent(Continent.NORTH_AMERICA);
+        app.getAllCitiesInAContinent(Continent.NORTH_AMERICA);
 
 
         app.disconnect(); // Disconnect from DB
@@ -103,6 +103,16 @@ public class App {
             ArrayList<City> tempCities = new ArrayList<>();
 
             Statement statement = connection.createStatement();
+            ResultSet set = statement.executeQuery(query);
+
+             while(set.next()) {
+                 City city = new City(set.getInt("ID"), set.getString("Name"), set.getString("CountryCode"),
+                         set.getString("District"), set.getInt("Population"));
+
+                 tempCities.add(city);
+             }
+
+             return tempCities;
 
         } catch (SQLException exc) {
 
