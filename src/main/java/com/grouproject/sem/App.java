@@ -16,7 +16,7 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
 
-        app.connect();
+        app.connect(); // Connect to the database
         listOfRegions = new ArrayList<String>();
         listOfRegions = app.extractRegions();
 
@@ -27,6 +27,7 @@ public class App {
         //app.printCountries(app.getTopNCountriesOrderByPopulation(3));
 
         app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
+        app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
 
 
         app.disconnect(); // Disconnect from DB
