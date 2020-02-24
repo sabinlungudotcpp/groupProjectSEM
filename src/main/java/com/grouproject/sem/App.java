@@ -1,5 +1,4 @@
-package com.grouproject.sem;
-
+package main.java.com.grouproject.sem;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ public class App {
 
 
         //app.printCountries(app.getAllCountriesOrderByPopulation());
-        app.printCountries(app.getCountriesInContinentByLargestPopulation(Continent.NORTH_AMERICA));
+        app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //app.getTopNCountriesOrderByPopulation(3);
 
@@ -43,7 +42,7 @@ public class App {
         return extractCountryData(query);
     }
 
-    private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
+    private ArrayList<Country> getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent continent) { // Requirement 2 code
         String myQuery = "SELECT * FROM country "
                 + " WHERE Continent = '" + continent.getContinent()
                 + "' ORDER BY country.Population DESC ";

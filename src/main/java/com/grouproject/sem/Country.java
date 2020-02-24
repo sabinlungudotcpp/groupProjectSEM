@@ -1,4 +1,4 @@
-package com.grouproject.sem;
+package main.java.com.grouproject.sem;
 
 public class Country { // Country class
     public String code;

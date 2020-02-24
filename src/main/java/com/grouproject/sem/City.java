@@ -1,4 +1,4 @@
-package com.grouproject.sem;
+package main.java.com.grouproject.sem;
 
 public class City { // City class that represents data in the database
     public int id;
