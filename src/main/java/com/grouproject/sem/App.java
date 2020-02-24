@@ -91,8 +91,8 @@ public class App {
     private ArrayList<City> getAllCitiesInAContinent(Continent continent) {
         String query = "SELECT * FROM city" +
                 " INNER JOIN country ON (city.CountryCode = country.code)" +
-                " WHERE Continent = " + continent.getContinent() +
-                " ORDER BY city.population DESC ";
+                " WHERE Continent = '" + continent.getContinent() +
+                "' ORDER BY city.population DESC ";
         return extractCityData(query);
     }
 
