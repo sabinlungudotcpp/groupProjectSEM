@@ -1,4 +1,4 @@
-package main.java.com.grouproject.sem;
+package com.grouproject.sem;
 import com.grouproject.sem.Continent;
 
 import java.sql.*;
@@ -100,7 +100,7 @@ public class App {
 
     private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
         try {
-            ArrayList<City> tempCities = new ArrayList<>();
+            ArrayList<City> tempCities = new ArrayList<City>();
 
             Statement statement = connection.createStatement();
             ResultSet set = statement.executeQuery(query);
