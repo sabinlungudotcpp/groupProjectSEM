@@ -1,5 +1,4 @@
 package com.grouproject.sem;
-import com.grouproject.sem.Continent;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,16 +35,21 @@ public class App {
 
     private void printCountries(ArrayList<Country> countries) {
         for (Country country : countries) {
+
             System.out.println(country.toString());
         }
     }
 
     private void printCities(ArrayList<City> cities) {
         Object[][] cityTable = new String[cities.size()+1][];
+
         cityTable[0] = new String[] { "ID", "Name", "CountryCode", "District", "Population" };
+
         for (int i = 0; i < cities.size() - 1; i++) {
+
             cityTable[i + 1] = new String[] { String.valueOf(cities.get(i).getId()), cities.get(i).getName(), cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation()) };
         }
+
         for (final Object[] row : cityTable) {
             System.out.format("%25s%25s%25s%25s%25s\n", row);
         }
@@ -79,8 +83,16 @@ public class App {
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<City> getAllCitiesInAContinent(Continent continent) {
+    private ArrayList<City> getAllCitiesInWorld() {
         String query = "SELECT * FROM city ORDER BY city.population DESC;";
+        return extractCityData(query);
+    }
+
+    private ArrayList<City> getAllCitiesInAContinent(Continent continent) {
+        String query = "SELECT * FROM city" +
+                " INNER JOIN country ON (city.CountryCode = country.code)" +
+                " WHERE Continent = " + continent.getContinent() +
+                " ORDER BY city.population DESC ";
         return extractCityData(query);
     }
 
