@@ -96,6 +96,15 @@ public class App {
         return extractCityData(query);
     }
 
+    private ArrayList<City> getAllCitiesInARegion(String theRegion) { // This routine gets all the cities in a region by passing in an input region from the user.
+        String query = "SELECT * FROM city" +
+                " INNER JOIN country ON (city.CountryCode = country.code)" +
+                " WHERE region = '" + theRegion +
+                "' ORDER BY country.region DESC "; // The query to get it.
+
+        return extractCityData(theRegion);
+    }
+
     private ArrayList<Country> extractCountryData(String query) {
         try {
 
@@ -124,12 +133,12 @@ public class App {
 
     private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
         try {
-            ArrayList<City> tempCities = new ArrayList<City>();
+            ArrayList<City> tempCities = new ArrayList<City>(); // A list of cities to get stored.
 
             Statement statement = connection.createStatement();
             ResultSet set = statement.executeQuery(query);
 
-             while(set.next()) {
+            while (set.next()) { // Loop over the next set
                  City city = new City(set.getInt("ID"), set.getString("Name"),
                          set.getString("CountryCode"),
                          set.getString("District"),
