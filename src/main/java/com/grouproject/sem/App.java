@@ -101,7 +101,7 @@ public class App {
         String query = "SELECT * FROM city" +
                 " INNER JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE region = '" + theRegion +
-                "' ORDER BY country.region DESC "; // The query to get it.
+                "' ORDER BY city.population DESC "; // The query to get it.
 
         return extractCityData(query);
     }
