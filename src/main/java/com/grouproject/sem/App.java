@@ -1,4 +1,6 @@
 package main.java.com.grouproject.sem;
+import com.grouproject.sem.Continent;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -24,6 +26,8 @@ public class App {
         app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //app.getTopNCountriesOrderByPopulation(3);
+
+        app.getAllCitiesInAContinent(Continent.NORTH_AMERICA);
 
 
         app.disconnect(); // Disconnect from DB
@@ -65,6 +69,11 @@ public class App {
         return extractCountryData(myQuery);
     }
 
+    private ArrayList<City> getAllCitiesInAContinent(com.grouproject.sem.Continent continent) {
+
+        return null;
+    }
+
     private ArrayList<Country> extractCountryData(String query) {
         try {
 
@@ -89,6 +98,23 @@ public class App {
             System.out.println(exc.toString());
             return null;
         }
+    }
+
+    private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
+        try {
+            ArrayList<City> tempCities = new ArrayList<>();
+
+            Statement statement = connection.createStatement();
+
+        } catch (SQLException exc) {
+
+            exc.printStackTrace();
+
+            System.out.println(exc.getMessage());
+
+        }
+
+        return null;
     }
 
     private ArrayList<String> extractRegions() { // Returns a list of regions
