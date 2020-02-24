@@ -30,7 +30,7 @@ public class App {
         //app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         // app.printCities(app.getAllCitiesInACountry("Germany"));
 
-        app.printCities(app.getAllCitiesInADistrict("Kabol"));
+        app.printCities(app.getAllCitiesInADistrict("Colorado"));
 
 
         app.disconnect(); // Disconnect from DB
@@ -49,9 +49,9 @@ public class App {
 
         cityTable[0] = new String[] { "ID", "Name", "CountryCode", "District", "Population" };
 
-        for (int i = 0; i < cities.size() - 1; i++) {
+        for (int i = 1; i < cities.size(); i++) {
 
-            cityTable[i + 1] = new String[] { String.valueOf(cities.get(i).getId()), cities.get(i).getName(), cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation()) };
+            cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(), cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
         }
 
         for (final Object[] row : cityTable) {
