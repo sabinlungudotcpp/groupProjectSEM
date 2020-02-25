@@ -32,9 +32,9 @@ public class App {
         //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         //10. app.printCities(app.getAllCitiesInACountry("Germany"));
         //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
-       // 12. app.printCities(app.getTopNCitiesInTheWorld(5));
-       // 13. app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
-       // 14. app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
+         app.printCities(app.getTopNCitiesInTheWorld(5));
+         app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
+         app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
 
         app.printCities(app.getTopNCitiesInADistrict(5, "Colombia"));
 
