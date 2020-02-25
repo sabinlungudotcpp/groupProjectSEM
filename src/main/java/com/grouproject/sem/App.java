@@ -163,7 +163,7 @@ public class App {
 
     private ArrayList<City> getTopNCitiesInTheWorld(int theLimit) {
         String theQuery = "SELECT * FROM city " +
-                "ORDER BY city.population " +
+                "ORDER BY city.population DESC " +
                 "LIMIT " + theLimit;
 
         return extractCityData(theQuery);
@@ -173,7 +173,7 @@ public class App {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Continent = '" + continent +
-                "' ORDER BY city.population " +
+                "' ORDER BY city.population DESC " +
                 "LIMIT " + theLimit;
 
         return extractCityData(theQuery);
@@ -183,7 +183,7 @@ public class App {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Region = '" + theRegion +
-                "' ORDER BY city.population " +
+                "' ORDER BY city.population DESC " +
                 "LIMIT " + theLimit;
 
         return extractCityData(theQuery);
