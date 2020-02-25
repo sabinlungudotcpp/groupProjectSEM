@@ -32,6 +32,9 @@ public class App {
         //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         //10. app.printCities(app.getAllCitiesInACountry("Germany"));
         //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
+        app.printCities(app.getTopNCitiesInTheWorld(5));
+        app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
+        app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
@@ -170,6 +173,16 @@ public class App {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Continent = '" + continent +
+                "' ORDER BY city.population " +
+                "LIMIT " + theLimit;
+
+        return extractCityData(theQuery);
+    }
+
+    private ArrayList<City> getTopNCitiesInRegion(int theLimit, String theRegion) {
+        String theQuery = "SELECT * FROM city " +
+                "INNER JOIN country ON (city.countryCode = country.code)" +
+                "WHERE Region = '" + theRegion +
                 "' ORDER BY city.population " +
                 "LIMIT " + theLimit;
 
