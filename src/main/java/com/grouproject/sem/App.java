@@ -36,7 +36,7 @@ public class App {
          app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
          app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
 
-        app.printCities(app.getTopNCitiesInADistrict(5, "Colombia"));
+        app.printCities(app.getTopNCitiesInADistrict(5, "Kabol"));
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
