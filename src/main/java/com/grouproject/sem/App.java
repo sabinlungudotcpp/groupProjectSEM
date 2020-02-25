@@ -203,8 +203,8 @@ public class App {
     }
 
     private ArrayList<City> getAllCapitalCities() {
-        String query = "SELECT * FROM country " +
-                "RIGHT JOIN city ON (country.Capital = city.ID) " +
+        String query = "SELECT * FROM city " +
+                "RIGHT JOIN country ON (country.Capital = city.ID) " +
                 "ORDER BY city.population DESC";
 
         return extractCityData(query);
