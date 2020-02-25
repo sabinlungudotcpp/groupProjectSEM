@@ -163,7 +163,7 @@ public class App {
 
     private ArrayList<City> getTopNCitiesInTheWorld(int theLimit) {
         String theQuery = "SELECT * FROM city " +
-                "ORDER BY city.population" +
+                "ORDER BY city.population " +
                 "LIMIT " + theLimit;
 
         return extractCityData(theQuery);
