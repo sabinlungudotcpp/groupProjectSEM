@@ -158,6 +158,23 @@ public class App {
         return extractCityData(query);
     }
 
+    private ArrayList<City> getTopNCitiesInTheWorld(int theLimit) {
+        String theQuery = "SELECT * FROM city " +
+                "ORDER BY city.population" +
+                "LIMIT " + theLimit;
+
+        return extractCityData(theQuery);
+    }
+
+    private ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) {
+        String theQuery = "SELECT * FROM city " +
+                "WHERE Continent = '" + continent +
+                "ORDER BY city.population" +
+                "LIMIT " + theLimit;
+
+        return extractCityData(theQuery);
+    }
+
     private ArrayList<Country> extractCountryData(String query) {
         try {
 
