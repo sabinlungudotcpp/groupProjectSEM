@@ -32,9 +32,11 @@ public class App {
         //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         //10. app.printCities(app.getAllCitiesInACountry("Germany"));
         //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
-        app.printCities(app.getTopNCitiesInTheWorld(5));
-        app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
-        app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
+       // 12. app.printCities(app.getTopNCitiesInTheWorld(5));
+       // 13. app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
+       // 14. app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
+
+        app.printCities(app.getTopNCitiesInADistrict(5, "Colombia"));
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
@@ -183,6 +185,16 @@ public class App {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Region = '" + theRegion +
+                "' ORDER BY city.population DESC " +
+                "LIMIT " + theLimit;
+
+        return extractCityData(theQuery);
+    }
+
+    private ArrayList<City> getTopNCitiesInADistrict(int theLimit, String theDistrict) {
+        String theQuery = "SELECT * FROM city " +
+                "INNER JOIN country ON (city.countryCode = country.code)" +
+                "WHERE District = '" + theDistrict +
                 "' ORDER BY city.population DESC " +
                 "LIMIT " + theLimit;
 
