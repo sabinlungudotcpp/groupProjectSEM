@@ -71,7 +71,7 @@ public class App {
             cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(),
                     cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
         }
-
+        System.out.println(cities.size());
         System.out.format("%25s%25s%25s%25s%25s\n", header);
         for (final Object[] row : cityTable) {
             System.out.format("%25s%25s%25s%25s%25s\n", row);
@@ -204,7 +204,8 @@ public class App {
 
     private ArrayList<City> getAllCapitalCities() {
         String query = "SELECT * FROM city " +
-                "RIGHT JOIN country ON (country.Capital = city.ID) " +
+                "LEFT JOIN country ON (country.Capital = city.ID) " +
+                "WHERE country.Code IS NOT NULL " +
                 "ORDER BY city.population DESC";
 
         return extractCityData(query);
