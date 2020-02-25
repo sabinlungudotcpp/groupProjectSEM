@@ -168,8 +168,9 @@ public class App {
 
     private ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) {
         String theQuery = "SELECT * FROM city " +
+                "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Continent = '" + continent +
-                "ORDER BY city.population" +
+                "' ORDER BY city.population " +
                 "LIMIT " + theLimit;
 
         return extractCityData(theQuery);
