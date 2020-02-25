@@ -2,7 +2,6 @@ package com.grouproject.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 // Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
 // Date of Last Modified: 7/02/2020
@@ -22,29 +21,37 @@ public class App {
         listOfRegions = app.extractRegions();
 
 
-        //app.printCountries(app.getAllCountriesOrderByPopulation());
-       // app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
-       // app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
-        //app.printCountries(app.getTopNCountriesOrderByPopulation(3));
-
-        // app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
-        //app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
-        // app.printCities(app.getAllCitiesInACountry("Germany"));
-
-        //app.printCities(app.getAllCitiesInADistrict("Kabol"));
-
-        Scanner in = new Scanner(System.in);
-        String s = in.nextLine();
-        System.out.println("String:" + s);
+        //1. app.printCountries(app.getAllCountriesOrderByPopulation());
+        //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
+        //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
+        //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
+        //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
+        //6. app.printCountries(app.getTopNCountriesInARegion(3, listOfRegions.get(0)));
+        //7. app.printCities(app.getAllCitiesInWorld());
+        //8. app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
+        //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
+        //10. app.printCities(app.getAllCitiesInACountry("Germany"));
+        //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
     }
 
     private void printCountries(ArrayList<Country> countries) {
-        for (Country country : countries) {
+        Object[][] countryTable = new String[countries.size()][];
 
-            System.out.println(country.toString());
+        String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"};
+
+        for (int i = 0; i < countries.size(); i++) {
+
+            countryTable[i] = new String[]{String.valueOf(countries.get(i).getCode()), countries.get(i).getName(),
+                    countries.get(i).getContinent(), countries.get(i).getRegion(), Integer.toString(countries.get(i).getCapital()),
+                    Integer.toString(countries.get(i).getPopulation())};
+        }
+
+        System.out.format("%25s%25s%25s%25s%25s%25s\n", header);
+        for (final Object[] row : countryTable) {
+            System.out.format("%25s%25s%25s%25s%25s%25s\n", row);
         }
     }
 
@@ -55,7 +62,8 @@ public class App {
 
         for (int i = 0; i < cities.size(); i++) {
 
-            cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(), cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
+            cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(),
+                    cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
         }
 
         System.out.format("%25s%25s%25s%25s%25s\n", header);
@@ -81,6 +89,24 @@ public class App {
                 + "FROM country "
                 + "ORDER BY country.Population DESC "
                 + "LIMIT " + n;
+        return extractCountryData(myQuery);
+    }
+
+    private ArrayList<Country> getTopNCountriesInAContinent(int limit, Continent continent) { // Routine that gets the SQL query results for the first Requirement
+        String myQuery = "SELECT * "
+                + "FROM country "
+                + "WHERE continent = '" + continent
+                + "' ORDER BY country.Population DESC "
+                + "LIMIT " + limit;
+        return extractCountryData(myQuery);
+    }
+
+    private ArrayList<Country> getTopNCountriesInARegion(int limit, String region) { // Routine that gets the SQL query results for the first Requirement
+        String myQuery = "SELECT * "
+                + "FROM country "
+                + "WHERE region = '" + region
+                + "' ORDER BY country.Population DESC "
+                + "LIMIT " + limit;
         return extractCountryData(myQuery);
     }
 
