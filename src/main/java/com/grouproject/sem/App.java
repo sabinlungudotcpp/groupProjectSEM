@@ -37,7 +37,8 @@ public class App {
         //14. app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
         //15. app.printCities(app.getTopNCitiesInADistrict(5, "Kabol"));
 
-        app.printCities(app.getAllCapitalCities());
+        app.printCities(app.getAllCapitalCitiesInAContinent(Continent.AFRICA));
+       // app.printCities(app.getAllCapitalCities());
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
@@ -211,6 +212,16 @@ public class App {
         return extractCityData(query);
     }
 
+    private ArrayList<City> getAllCapitalCitiesInAContinent(Continent continent) {
+
+        String theQuery = "SELECT * FROM city " +
+                "LEFT JOIN country ON (country.Capital = city.ID) " +
+                "WHERE country.Code IS NOT NULL AND country.Continent = '" + continent +
+                "' ORDER BY city.population DESC";
+
+        return extractCityData(theQuery);
+    }
+
     private ArrayList<Country> extractCountryData(String query) {
         try {
 
@@ -229,6 +240,7 @@ public class App {
 
                 //System.out.println(country.toString()); // Print all the data out
             }
+
             return temp_countries;
 
         } catch (SQLException exc) { // Catch exception
