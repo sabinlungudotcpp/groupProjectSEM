@@ -20,30 +20,16 @@ public class App {
         listOfRegions = new ArrayList<String>();
         listOfRegions = app.extractRegions();
 
+        test();
 
-        //1. app.printCountries(app.getAllCountriesOrderByPopulation());
-        //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
-        //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
-        //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
-        //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
-        //6. app.printCountries(app.getTopNCountriesInARegion(3, listOfRegions.get(0)));
-        //7. app.printCities(app.getAllCitiesInWorld());
-        //8. app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
-        //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
-        //10. app.printCities(app.getAllCitiesInACountry("Germany"));
-        //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
-        //12. app.printCities(app.getTopNCitiesInTheWorld(5));
-        //13. app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
-        //14. app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
-        //15. app.printCities(app.getTopNCitiesInADistrict(5, "Kabol"));
-
-       // app.printCities(app.getAllCapitalCitiesInAContinent(Continent.AFRICA));
-        app.printCities(app.getAllCapitalCitiesInARegion("Middle East"));
-       // app.printCities(app.getAllCapitalCities());
+        app.printCities(app.getTopNCapitalCitiesInWorld(5));
+        app.printCities(app.getTopNCapitalCitiesInAContinent(5, Continent.EUROPE));
+        app.printCities(app.getTopNCapitalCitiesInARegion(5, "Middle East"));
 
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
     }
+
 
     private void printCountries(ArrayList<Country> countries) {
         Object[][] countryTable = new String[countries.size()][];
@@ -407,4 +393,35 @@ public class App {
 
         }
     }
+
+
+
+
+
+
+
+
+    private static void test() { // THIS IS A TEST FUNCTION TO TEST OUR QUERIES.
+        //1. app.printCountries(app.getAllCountriesOrderByPopulation());
+        //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
+        //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
+        //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
+        //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
+        //6. app.printCountries(app.getTopNCountriesInARegion(3, listOfRegions.get(0)));
+        //7. app.printCities(app.getAllCitiesInWorld());
+        //8. app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
+        //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
+        //10. app.printCities(app.getAllCitiesInACountry("Germany"));
+        //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
+        //12. app.printCities(app.getTopNCitiesInTheWorld(5));
+        //13. app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
+        //14. app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
+        //15. app.printCities(app.getTopNCitiesInADistrict(5, "Kabol"));
+
+        // app.printCities(app.getAllCapitalCitiesInAContinent(Continent.AFRICA));
+        // app.printCities(app.getAllCapitalCitiesInARegion("Middle East"));
+        // app.printCities(app.getAllCapitalCities());
+
+    }
+
 }
