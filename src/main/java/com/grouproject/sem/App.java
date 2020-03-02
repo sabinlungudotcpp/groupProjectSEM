@@ -233,6 +233,58 @@ public class App {
         return extractCityData(theQuery);
     }
 
+
+
+
+
+
+    private ArrayList<City> getTopNCapitalCitiesInWorld(int n) {
+        String query = "SELECT * FROM city " +
+                "LEFT JOIN country ON (country.Capital = city.ID) " +
+                "WHERE country.Code IS NOT NULL " +
+                "ORDER BY city.population DESC" +
+                " LIMIT " + n;
+
+        return extractCityData(query);
+    }
+
+    private ArrayList<City> getTopNCapitalCitiesInAContinent(int n, Continent continent) {
+
+        String theQuery = "SELECT * FROM city " +
+                "LEFT JOIN country ON (country.Capital = city.ID) " +
+                "WHERE country.Code IS NOT NULL AND country.Continent = '" + continent +
+                "' ORDER BY city.population DESC" +
+                 " LIMIT " + n;
+
+        return extractCityData(theQuery);
+    }
+
+    private ArrayList<City> getTopNCapitalCitiesInARegion(int n, String theRegion) {
+
+        String theQuery = "SELECT * FROM city " +
+                "LEFT JOIN country ON (country.Capital = city.ID) " +
+                "WHERE country.Code IS NOT NULL AND country.Region = '" + theRegion +
+                "' ORDER BY city.population DESC" +
+                " LIMIT " + n;
+
+        return extractCityData(theQuery);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private ArrayList<Country> extractCountryData(String query) {
         try {
 
