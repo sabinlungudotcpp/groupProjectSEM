@@ -17,7 +17,7 @@ class MyTest {
 
         /* TODO in Docker view, pull docker image from "kevinchalmers/world"
          *   then create a container from said image with the run command
-         *   "-e MYSQL_ROOT_PASSWORD=YES -p 33060:3306" */
+         *   "-e MYSQL_ROOT_PASSWORD=example -p 33060:3306" */
 
         boolean isPassed = false;
         ArrayList<Country> temp = app.getAllCountriesOrderByPopulation();
