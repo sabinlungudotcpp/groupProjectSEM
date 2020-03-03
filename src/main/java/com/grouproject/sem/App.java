@@ -16,18 +16,19 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
 
-        app.connect(); // Connect to the database
+        app.connect("localhost:33060"); // Connect to the database
         listOfRegions = new ArrayList<String>();
         listOfRegions = app.extractRegions();
 
-        app.printCountries(app.getAllCountriesOrderByPopulation());
+        //1. app.printCountries(app.getAllCountriesOrderByPopulation());
         //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
         //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
         //6. app.printCountries(app.getTopNCountriesInARegion(3, listOfRegions.get(0)));
         //7. app.printCities(app.getAllCitiesInWorld());
-        //8. app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
+        //8. app.printCities(app.
+        // (Continent.NORTH_AMERICA));
         //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         //10. app.printCities(app.getAllCitiesInACountry("Germany"));
         //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
@@ -369,7 +370,35 @@ public class App {
         }
     }
 
-    private void connect() { // Routine to connect to the DB
+    public void connect(String location) {
+        try {
+            // Load Database driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not load SQL driver");
+            System.exit(-1);
+        }
+
+        int retries = 10;
+        for (int i = 0; i < retries; ++i) {
+            System.out.println("Connecting to database...");
+            try {
+                // Wait a bit for db to start
+                Thread.sleep(30000);
+                // Connect to database
+                connection = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                System.out.println("Successfully connected");
+                break;
+            } catch (SQLException sqle) {
+                System.out.println("Failed to connect to database attempt " + i);
+                System.out.println(sqle.getMessage());
+            } catch (InterruptedException ie) {
+                System.out.println("Thread interrupted? Should not happen.");
+            }
+        }
+    }
+
+    /*private void connect() { // Routine to connect to the DB
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -401,5 +430,5 @@ public class App {
             }
 
         }
-    }
+    }*/
 }
