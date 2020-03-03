@@ -243,8 +243,6 @@ public class App {
 
 
 
-
-
     private ArrayList<City> getTopNCapitalCitiesInWorld(int n) {
         String query = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -275,6 +273,10 @@ public class App {
                 " LIMIT " + n;
 
         return extractCityData(theQuery);
+    }
+
+    private void populationContinent() {
+
     }
 
 
