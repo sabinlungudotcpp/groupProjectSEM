@@ -41,6 +41,7 @@ public class App {
         app.printCities(app.getAllCapitalCities());
 
       //  app.printCities(app.getTopNCapitalCitiesInWorld(10));
+        //tst
       //  app.printCities(app.getTopNCapitalCitiesInAContinent(10, Continent.EUROPE));
        // app.printCities(app.getTopNCapitalCitiesInARegion(10, "Middle East"));
 
