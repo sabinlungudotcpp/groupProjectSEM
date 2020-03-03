@@ -20,7 +20,7 @@ public class App {
         listOfRegions = new ArrayList<String>();
         listOfRegions = app.extractRegions();
 
-        //1. app.printCountries(app.getAllCountriesOrderByPopulation());
+        app.printCountries(app.getAllCountriesOrderByPopulation());
         //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
@@ -38,7 +38,7 @@ public class App {
 
         // app.printCities(app.getAllCapitalCitiesInAContinent(Continent.AFRICA));
         // app.printCities(app.getAllCapitalCitiesInARegion("Middle East"));
-        app.printCities(app.getAllCapitalCities());
+        //  app.printCities(app.getAllCapitalCities());
 
       //  app.printCities(app.getTopNCapitalCitiesInWorld(10));
         //tst
@@ -85,7 +85,7 @@ public class App {
         }
     }
 
-    private ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
+    public ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
         String query = "SELECT * FROM country ORDER BY country.Population DESC";
         return extractCountryData(query);
     }
@@ -412,5 +412,4 @@ public class App {
 
         }
     }
-
 }

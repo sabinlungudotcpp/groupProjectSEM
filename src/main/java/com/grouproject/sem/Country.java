@@ -159,6 +159,40 @@ public class Country { // Country class
         this.code2 = code2;
     }
 
+    /*
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+
+            return true;
+        }
+
+        if (!(o instanceof Country)) {
+
+            return false;
+        }
+
+        Country country = (Country) o;
+        return Float.compare(country.getSurfaceArea(), getSurfaceArea()) == 0 &&
+                getIndepYear() == country.getIndepYear() &&
+                getPopulation() == country.getPopulation() &&
+                Float.compare(country.getLifeExpectancy(), getLifeExpectancy()) == 0 &&
+                Float.compare(country.getGNP(), getGNP()) == 0 &&
+                Float.compare(country.getGNPOld(), getGNPOld()) == 0 &&
+
+                getCapital() == country.getCapital() &&
+                getCode().equals(country.getCode()) &&
+                getName().equals(country.getName()) &&
+                getContinent().equals(country.getContinent()) &&
+                getRegion().equals( country.getRegion()) &&
+                Objects.equals(getLocalName(), country.getLocalName()) &&
+                Objects.equals(getGovernmentForm(), country.getGovernmentForm()) &&
+                Objects.equals(getHeadOfState(), country.getHeadOfState()) &&
+                Objects.equals(getCode2(), country.getCode2());
+    }
+
+     */
+
     @Override
     public String toString() {
         return "Country{" +
