@@ -63,6 +63,7 @@ public class App {
         }
 
         System.out.format("%25s%25s%25s%25s%25s%25s\n", header);
+
         for (final Object[] row : countryTable) {
             System.out.format("%25s%25s%25s%25s%25s%25s\n", row);
         }
@@ -80,6 +81,7 @@ public class App {
         }
         System.out.println(cities.size());
         System.out.format("%25s%25s%25s%25s%25s\n", header);
+
         for (final Object[] row : cityTable) {
             System.out.format("%25s%25s%25s%25s%25s\n", row);
         }
@@ -276,21 +278,7 @@ public class App {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private ArrayList<Country> extractCountryData(String query) {
+    public ArrayList<Country> extractCountryData(String query) {
         try {
 
             ArrayList<Country> temp_countries = new ArrayList<Country>();
