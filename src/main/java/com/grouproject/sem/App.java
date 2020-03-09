@@ -45,6 +45,9 @@ public class App {
       //  app.printCities(app.getTopNCapitalCitiesInAContinent(10, Continent.EUROPE));
        // app.printCities(app.getTopNCapitalCitiesInARegion(10, "Middle East"));
 
+        app.printPopulation(app.getCityPopulationContinents());
+        app.printPopulation(app.getCityPopulationRegion());
+        app.printPopulation(app.getCityPopulationCountry());
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
     }
@@ -84,6 +87,24 @@ public class App {
 
         for (final Object[] row : cityTable) {
             System.out.format("%25s%25s%25s%25s%25s\n", row);
+        }
+    }
+
+    private void printPopulation(ArrayList<PopulationData> populationData) {
+        Object[][] populationTable = new String[populationData.size()][];
+
+        String[] header = new String[]{"Name", "Total Population", "City Population", "%", "Rural Population", "%"};
+
+        for (int i = 0; i < populationData.size(); i++) {
+
+            populationTable[i] = new String[]{String.valueOf(populationData.get(i).getName()), Double.toString(populationData.get(i).getTotal_population()),
+                    Double.toString(populationData.get(i).getLivingInCities()), Float.toString(populationData.get(i).getPercentageCities()), Double.toString(populationData.get(i).getNotLivingInCities()), Float.toString(populationData.get(i).getPercentageNotInCities())};
+        }
+        System.out.println(populationData.size());
+        System.out.format("%25s%25s%25s%25s%25s%25s\n", header);
+
+        for (final Object[] row : populationTable) {
+            System.out.format("%25s%25s%25s%25s%25s%25s\n", row);
         }
     }
 
@@ -273,6 +294,64 @@ public class App {
                 " LIMIT " + n;
 
         return extractCityData(theQuery);
+    }
+
+    public ArrayList<PopulationData> getCityPopulationContinents()
+    {
+        String query = "SELECT cityPopulation.Continent, Continent_Population, City_Population, ((City_Population/Continent_Population) * 100) AS '(City_Population %)', (Continent_Population - City_Population) AS Rural_Population, (((Continent_Population - City_Population)/Continent_Population) * 100) AS '(Rural_Population %)'\n" +
+                "FROM\n" +
+                "(SELECT SUM(city.Population) AS City_Population, country.Continent FROM city\n" +
+                "INNER JOIN country ON (city.CountryCode = country.code)\n" +
+                "GROUP BY country.Continent) AS cityPopulation\n" +
+                "INNER JOIN\n" +
+                "(SELECT SUM(country.Population) AS Continent_Population, country.Continent FROM country\n" +
+                "GROUP BY country.Continent) AS continentPopulation\n" +
+                "ON (cityPopulation.Continent = continentPopulation.Continent);";
+        return extractPopulationData(query);
+    }
+
+    public ArrayList<PopulationData> getCityPopulationRegion()
+    {
+        String query = "SELECT cityPopulation.Region, Region_Population, City_Population, ((City_Population/Region_Population) * 100) AS '%', (Region_Population - City_Population) AS Rural_Population, (((Region_Population - City_Population)/Region_Population) * 100) AS '%'\n" +
+                "FROM\n" +
+                "(SELECT SUM(city.Population) AS City_Population, country.Region FROM city\n" +
+                "INNER JOIN country ON (city.CountryCode = country.code)\n" +
+                "GROUP BY country.Region) AS cityPopulation\n" +
+                "INNER JOIN\n" +
+                "(SELECT SUM(country.Population) AS Region_Population, country.Region FROM country\n" +
+                "GROUP BY country.Region) AS RegionPopulation\n" +
+                "ON (cityPopulation.Region = RegionPopulation.Region);";
+        return extractPopulationData(query);
+    }
+
+    public ArrayList<PopulationData> getCityPopulationCountry()
+    {
+        String query = "SELECT cityPopulation.Country_Name, Country_Population, City_Population, ((City_Population/Country_Population) * 100) AS '%', (Country_Population - City_Population) AS Rural_Population, (((Country_Population - City_Population)/Country_Population) * 100) AS '%'\n" +
+                "FROM\n" +
+                "(SELECT SUM(city.Population) AS City_Population, country.Name AS Country_Name FROM city\n" +
+                "INNER JOIN country ON (city.CountryCode = country.code)\n" +
+                "GROUP BY country.Name) AS cityPopulation\n" +
+                "INNER JOIN\n" +
+                "(SELECT SUM(country.Population) AS Country_Population, country.Name AS Country_Name FROM country\n" +
+                "GROUP BY country.Name) AS countryPopulation\n" +
+                "ON (cityPopulation.Country_Name = countryPopulation.Country_Name);";
+        return extractPopulationData(query);
+    }
+
+    public ArrayList<PopulationData> extractPopulationData(String query) {
+        try {
+            ArrayList<PopulationData> temp_population = new ArrayList<PopulationData>();
+            Statement stmt = connection.createStatement(); // Create a connection statement
+            ResultSet set = stmt.executeQuery(query);
+            while (set.next()) {
+                PopulationData populationData = new PopulationData(set.getString(1), set.getDouble(2),set.getDouble(3),set.getFloat(4),set.getDouble(5),set.getFloat(6));
+                temp_population.add(populationData);
+            }
+            return temp_population;
+        } catch (SQLException exc) { // Catch exception
+            System.out.println(exc.toString());
+            return null;
+        }
     }
 
 
