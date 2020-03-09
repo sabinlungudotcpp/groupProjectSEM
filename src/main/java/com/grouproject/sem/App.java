@@ -174,7 +174,7 @@ public class App {
         return extractCityData(query);
     }
 
-    private ArrayList<City> getTopNCitiesInTheWorld(int theLimit) {
+    public ArrayList<City> getTopNCitiesInTheWorld(int theLimit) {
         String theQuery = "SELECT * FROM city " +
                 "ORDER BY city.population DESC " +
                 "LIMIT " + theLimit;
@@ -359,7 +359,7 @@ public class App {
         }
     }
 
-    private void disconnect() { // Routine to disconnect from the DB
+    public void disconnect() { // Routine to disconnect from the DB
         if (connection != null) {
             try {
 
