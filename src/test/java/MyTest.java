@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 class MyTest {
     static App app = new App();
@@ -44,4 +43,33 @@ class MyTest {
 
         app.disconnect();
     }
+
+    @Test
+    void testTopCapitalCities() {
+        app.connect("localhost:33060");
+
+        ArrayList<City> tempCities = app.getTopNCapitalCitiesInWorld(3);
+        City city = new City(2331,"Seoul","Korea","Seoul",9981619);
+
+         if(tempCities != null) {
+             assertEquals(city.getId(), tempCities.get(0).getId());
+         }
+
+         app.disconnect();
+    }
+
+    @Test
+    void testTopPopulatedCitiesLimit() { //Checks if the query returns the correct top populated country
+        app.connect("localhost:33060");
+
+        ArrayList<City> temp = app.getTopNCitiesInTheWorld(3);
+        City city = new City(1024,"Mumbai (Bombay)","IND","Maharashtra",10500000);
+
+        if (temp != null) {
+            assertEquals (3, temp.size());
+        }
+
+        app.disconnect();
+    }
+
 }

@@ -93,14 +93,14 @@ public class App {
         return extractCountryData(query);
     }
 
-    private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
+    public ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
         String myQuery = "SELECT * FROM country "
                 + " WHERE Continent = '" + continent.getContinent()
                 + "' ORDER BY country.Population DESC ";
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<Country> getTopNCountriesOrderByPopulation(int n) { // Routine that gets the SQL query results for the first Requirement
+    public ArrayList<Country> getTopNCountriesOrderByPopulation(int n) { // Routine that gets the SQL query results for the first Requirement
         String myQuery = "SELECT * "
                 + "FROM country "
                 + "ORDER BY country.Population DESC "
@@ -108,7 +108,7 @@ public class App {
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<Country> getTopNCountriesInAContinent(int limit, Continent continent) { // Routine that gets the SQL query results for the first Requirement
+    public ArrayList<Country> getTopNCountriesInAContinent(int limit, Continent continent) { // Routine that gets the SQL query results for the first Requirement
         String myQuery = "SELECT * "
                 + "FROM country "
                 + "WHERE continent = '" + continent
@@ -117,7 +117,7 @@ public class App {
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<Country> getTopNCountriesInARegion(int limit, String region) { // Routine that gets the SQL query results for the first Requirement
+    public ArrayList<Country> getTopNCountriesInARegion(int limit, String region) { // Routine that gets the SQL query results for the first Requirement
         String myQuery = "SELECT * "
                 + "FROM country "
                 + "WHERE region = '" + region
@@ -126,7 +126,7 @@ public class App {
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<Country> getCountriesInRegionByLargestPopulation(String region) { // Requirement 2 code
+    public ArrayList<Country> getCountriesInRegionByLargestPopulation(String region) { // Requirement 2 code
         String myQuery = "SELECT * FROM country "
                 + " WHERE Region = '" + region
                 + "' ORDER BY country.Population DESC ";
@@ -134,12 +134,12 @@ public class App {
         return extractCountryData(myQuery);
     }
 
-    private ArrayList<City> getAllCitiesInWorld() {
+    public ArrayList<City> getAllCitiesInWorld() {
         String query = "SELECT * FROM city ORDER BY city.population DESC;";
         return extractCityData(query);
     }
 
-    private ArrayList<City> getAllCitiesInAContinent(Continent continent) {
+    public ArrayList<City> getAllCitiesInAContinent(Continent continent) {
         String query = "SELECT * FROM city" +
                 " INNER JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE Continent = '" + continent.getContinent() +
@@ -147,7 +147,7 @@ public class App {
         return extractCityData(query);
     }
 
-    private ArrayList<City> getAllCitiesInARegion(String theRegion) { // This routine gets all the cities in a region by passing in an input region from the user.
+    public ArrayList<City> getAllCitiesInARegion(String theRegion) { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city" +
                 " INNER JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE region = '" + theRegion +
@@ -156,7 +156,7 @@ public class App {
         return extractCityData(query);
     }
 
-    private ArrayList<City> getAllCitiesInACountry(String theCountry) {
+    public ArrayList<City> getAllCitiesInACountry(String theCountry) {
         String query = "SELECT * FROM city" +
                 " JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE country.name = '" + theCountry +
@@ -165,7 +165,7 @@ public class App {
         return extractCityData(query);
     }
 
-    private ArrayList<City> getAllCitiesInADistrict(String theDistrict) {
+    public ArrayList<City> getAllCitiesInADistrict(String theDistrict) {
         String query = "SELECT * FROM city" +
                 " JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE city.District = '" + theDistrict +
@@ -182,7 +182,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    private ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) {
+    public ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Continent = '" + continent +
@@ -192,7 +192,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    private ArrayList<City> getTopNCitiesInRegion(int theLimit, String theRegion) {
+    public ArrayList<City> getTopNCitiesInRegion(int theLimit, String theRegion) {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Region = '" + theRegion +
@@ -202,7 +202,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    private ArrayList<City> getTopNCitiesInADistrict(int theLimit, String theDistrict) {
+    public ArrayList<City> getTopNCitiesInADistrict(int theLimit, String theDistrict) {
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE District = '" + theDistrict +
@@ -212,7 +212,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    private ArrayList<City> getAllCapitalCities() {
+    public ArrayList<City> getAllCapitalCities() {
         String query = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
                 "WHERE country.Code IS NOT NULL " +
@@ -221,7 +221,7 @@ public class App {
         return extractCityData(query);
     }
 
-    private ArrayList<City> getAllCapitalCitiesInAContinent(Continent continent) {
+    public ArrayList<City> getAllCapitalCitiesInAContinent(Continent continent) {
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -231,7 +231,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    private ArrayList<City> getAllCapitalCitiesInARegion(String theRegion) {
+    public ArrayList<City> getAllCapitalCitiesInARegion(String theRegion) {
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -244,7 +244,7 @@ public class App {
 
 
 
-    private ArrayList<City> getTopNCapitalCitiesInWorld(int n) {
+    public ArrayList<City> getTopNCapitalCitiesInWorld(int n) {
         String query = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
                 "WHERE country.Code IS NOT NULL " +
@@ -254,7 +254,7 @@ public class App {
         return extractCityData(query);
     }
 
-    private ArrayList<City> getTopNCapitalCitiesInAContinent(int n, Continent continent) {
+    public ArrayList<City> getTopNCapitalCitiesInAContinent(int n, Continent continent) {
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -265,7 +265,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    private ArrayList<City> getTopNCapitalCitiesInARegion(int n, String theRegion) {
+    public ArrayList<City> getTopNCapitalCitiesInARegion(int n, String theRegion) {
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -274,10 +274,6 @@ public class App {
                 " LIMIT " + n;
 
         return extractCityData(theQuery);
-    }
-
-    private void populationContinent() {
-
     }
 
 
