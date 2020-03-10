@@ -18,7 +18,7 @@ before_script:
   - mvn clean
 
 script:
-  - mvn test -Dtest=com.grouproject.sem.MyTest
+  - mvn test -Dtest=java/MyTest
 #language: java
 #
 #sudo: false
