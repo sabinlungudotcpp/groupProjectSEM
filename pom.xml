@@ -37,7 +37,7 @@
                     <finalName>grouproject</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.grouproject.sem.App</mainClass>
+                            <mainClass>App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

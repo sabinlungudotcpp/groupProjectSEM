@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class App {
 
-    private Connection connection = null;
+    protected Connection connection = null;
     private static ArrayList<String> listOfRegions = null; // Set to null initially
 
     public static void main(String[] args) {

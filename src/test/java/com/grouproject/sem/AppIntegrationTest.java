@@ -21,16 +21,15 @@ public class AppIntegrationTest
     }
 
     @Test
-    void first_test()
+    void testGetCountry()
     {
-        int cheese = 19;
-        assertEquals(cheese, 19);
+
     }
 
     @Test
-    void testGetCountry() {
-//        Country romania = new Country()
-//        assertEquals(bulgaria.getContinent(), "Europe");
+    void testGetCountryResult()
+    {
+
     }
 
     @AfterAll
