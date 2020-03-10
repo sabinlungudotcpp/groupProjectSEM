@@ -14,7 +14,6 @@ public class App {
     private static ArrayList<String> listOfRegions = null; // Set to null initially
 
     public static void main(String[] args) {
-        /*
         App app = new App();
 
         app.connect("localhost:33060"); // Connect to the database
@@ -28,8 +27,7 @@ public class App {
         //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
         //6. app.printCountries(app.getTopNCountriesInARegion(3, listOfRegions.get(0)));
         //7. app.printCities(app.getAllCitiesInWorld());
-        //8. app.printCities(app.
-        // (Continent.NORTH_AMERICA));
+        //8. app.printCities(app.getAllCitiesInAContinent(Continent.NORTH_AMERICA));
         //9. app.printCities(app.getAllCitiesInARegion(listOfRegions.get(0)));
         //10. app.printCities(app.getAllCitiesInACountry("Germany"));
         //11. app.printCities(app.getAllCitiesInADistrict("Kabol"));
@@ -37,21 +35,20 @@ public class App {
         //13. app.printCities(app.getTopNCitiesInContinent(5, Continent.EUROPE));
         //14. app.printCities(app.getTopNCitiesInRegion(5, "Middle East"));
         //15. app.printCities(app.getTopNCitiesInADistrict(5, "Kabol"));
+        //16. app.printCities(app.getAllCapitalCitiesInAContinent(Continent.AFRICA));
+        //17. app.printCities(app.getAllCapitalCitiesInARegion("Middle East"));
+        //18. app.printCities(app.getAllCapitalCities());
+        //19. app.printCities(app.getTopNCapitalCitiesInWorld(10));
+        //20. app.printCities(app.getTopNCapitalCitiesInAContinent(10, Continent.EUROPE));
+        //21. app.printCities(app.getTopNCapitalCitiesInARegion(10, "Middle East"));
+        //22. app.printPopulation(app.getCityPopulationContinents());
+        //23. app.printPopulation(app.getCityPopulationRegion());
+        //24. app.printPopulation(app.getCityPopulationCountry());
 
-        // app.printCities(app.getAllCapitalCitiesInAContinent(Continent.AFRICA));
-        // app.printCities(app.getAllCapitalCitiesInARegion("Middle East"));
-        // app.printCities(app.getAllCapitalCities());
-
-      //  app.printCities(app.getTopNCapitalCitiesInWorld(10));
-      //  app.printCities(app.getTopNCapitalCitiesInAContinent(10, Continent.EUROPE));
-       // app.printCities(app.getTopNCapitalCitiesInARegion(10, "Middle East"));
-
-        app.printPopulation(app.getCityPopulationContinents());
-        app.printPopulation(app.getCityPopulationRegion());
-        app.printPopulation(app.getCityPopulationCountry());
-        app.disconnect(); // Disconnect from DB
+        app.disconnect();
         System.out.println("End of program.");
-        */
+
+        // VVV used for app deployment
         // Create new Application
         App a = new App();
 
