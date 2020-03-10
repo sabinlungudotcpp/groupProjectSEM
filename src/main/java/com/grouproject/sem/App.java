@@ -14,6 +14,7 @@ public class App {
     private static ArrayList<String> listOfRegions = null; // Set to null initially
 
     public static void main(String[] args) {
+        /*
         App app = new App();
 
         app.connect("localhost:33060"); // Connect to the database
@@ -50,6 +51,22 @@ public class App {
         app.printPopulation(app.getCityPopulationCountry());
         app.disconnect(); // Disconnect from DB
         System.out.println("End of program.");
+        */
+        // Create new Application
+        App a = new App();
+
+        // Connect to database
+        if (args.length < 1)
+        {
+            a.connect("localhost:33060");
+        }
+        else
+        {
+            a.connect(args[0]);
+        }
+
+        // Disconnect from database
+        a.disconnect();
     }
 
 

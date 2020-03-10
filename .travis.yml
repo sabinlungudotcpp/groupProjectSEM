@@ -1,9 +1,40 @@
-sudo: required
-
 language: java
+
+sudo: false
+
+addons:
+  hosts:
+    - dbb
 
 services:
   - docker
 
-after_success:
-  - docker-compose up --abort-on-container-exit
+install:
+  - docker build -t database dbb/.
+  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+  - mvn clean
+
+jobs:
+  include:
+    - stage: unit tests
+      #install: skip
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.grouproject.sem.UnitTest
+    - stage: integration tests
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.grouproject.sem.AppIntegrationTest
+    - stage: deploy
+      install: skip
+      jdk: oraclejdk11
+      script:
+        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+        - docker-compose up --abort-on-container-exit
+
+      stages:
+        - unit tests
+        - integration tests
+        - name: deploy
+          if: branch = master

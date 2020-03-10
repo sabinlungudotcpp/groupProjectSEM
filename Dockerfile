@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/grouproject-1.0-SNAPSHOT-jar-with-dependencies.jar /tmp
+COPY ./target/grouproject.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "grouproject-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "grouproject.jar", "dbb:33060"]
