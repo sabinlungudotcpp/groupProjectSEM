@@ -22,11 +22,17 @@ jobs:
     - stage: unit tests
       #install: skip
       jdk: oraclejdk11
-      script: mvn test -Dtest=com.grouproject.sem.MyTest
-#    - stage: integration tests
-#      jdk: oraclejdk11
-#      script: echo "Integration Tests"
-#    - stage: deploy
-#      install: skip
-#      jdk: oraclejdk11
-#      script: echo "Deploy"
+      script: mvn test -Dtest=com.grouproject.sem.UnitTest
+    - stage: integration tests
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.grouproject.sem.AppIntegrationTest
+    - stage: deploy
+      install: skip
+      jdk: oraclejdk11
+      script: echo "Deploy"
+
+      stages:
+        - unit tests
+        - integration tests
+        - name: deploy
+          if: branch = master

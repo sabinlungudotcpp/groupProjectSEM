@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MyTest {
+class UnitTest {
     static App app = new App();
 
     /* TODO in Docker view, pull docker image from "kevinchalmers/world"
