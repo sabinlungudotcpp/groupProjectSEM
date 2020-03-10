@@ -1,3 +1,5 @@
+package com.grouproject.sem;
+
 import com.grouproject.sem.App;
 import com.grouproject.sem.City;
 import com.grouproject.sem.Country;
