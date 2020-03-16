@@ -18,6 +18,7 @@ public class AppIntegrationTest
     @BeforeAll
     static void init()
     {
+        //connect to the database
         app.connect("localhost:33060");
         assertNotNull(app.connection);
     }
@@ -25,6 +26,7 @@ public class AppIntegrationTest
     @Test
     void testGetCountry()
     {
+        //call query
         countries = app.getAllCountriesOrderByPopulation();
         assertFalse(countries.isEmpty());
     }
@@ -32,6 +34,7 @@ public class AppIntegrationTest
     @Test
     void testGetCountryResult()
     {
+        //generate a country and compare the values to the query items
         countries = app.getAllCountriesOrderByPopulation();
         Country country = new Country("CHN","China","Asia","Eastern Asia", (float) 9572900.0,-1523,1277558000,(float) 71.4,(float) 982268.0,(float) 917719.0,"Zhongquo","People\'sRepublic","Jiang Zemin",1891,"CN");
         //assertEquals(country.toString(), countries.get(0).toString());
