@@ -26,14 +26,14 @@ jobs:
     - stage: integration tests
       jdk: oraclejdk11
       script: mvn test -Dtest=com.grouproject.sem.AppIntegrationTest
-    - stage: deploy
-      install: skip
-      jdk: oraclejdk11
-      script:
-        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
-        - docker-compose up --abort-on-container-exit
+#    - stage: deploy
+#      install: skip
+#      jdk: oraclejdk11
+#      script:
+#        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+#        - docker-compose up --abort-on-container-exit
 
       stages:
         - unit tests
         - integration tests
-        - name: deploy
+        #- name: deploy
