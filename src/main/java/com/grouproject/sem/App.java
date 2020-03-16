@@ -14,7 +14,7 @@ public class App {
     private static ArrayList<String> listOfRegions = null; // Set to null initially
 
     public static void main(String[] args) {
-        App app = new App();
+        App app = new App(); // Creates a new instance of app
 
         app.connect("localhost:33060"); // Connect to the database
         listOfRegions = new ArrayList<String>();
@@ -53,26 +53,26 @@ public class App {
         App a = new App();
 
         // Connect to database
-        if (args.length < 1)
+        if (args.length < 1) // If the argum
         {
             a.connect("localhost:33060");
         }
         else
         {
-            a.connect(args[0]);
+            a.connect(args[0]); // Connect to the server
         }
 
-        // Disconnect from database
+        // Disconnect from database to prevent errors
         a.disconnect();
     }
 
 
-    private void printCountries(ArrayList<Country> countries) {
+    private void printCountries(ArrayList<Country> countries) { // Routine to print out the contries table, that returns nothing
         Object[][] countryTable = new String[countries.size()][];
 
-        String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"};
+        String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"}; // An array of strings to print out
 
-        for (int i = 0; i < countries.size(); i++) {
+        for (int i = 0; i < countries.size(); i++) { // Loop over the countr
 
             countryTable[i] = new String[]{String.valueOf(countries.get(i).getCode()), countries.get(i).getName(),
                     countries.get(i).getContinent(), countries.get(i).getRegion(), Integer.toString(countries.get(i).getCapital()),
