@@ -27,6 +27,7 @@ class UnitTest {
     void testAllCountriesOrderByPopulation() {
         //app.connect("localhost:33060");
 
+        //compare country item to one in the query
         ArrayList<Country> temp = app.getAllCountriesOrderByPopulation();
         Country country = new Country("AZE", "Azerbaijan", "Asia", "Middle East", (float) 86600.00, 1991, 7734000, (float) 62.9, (float) 4127.00, (float) 4100.00, "Azärbaycan", "Federal Republic", "Heydär Äliyev", 144, "AZ");
 
@@ -57,6 +58,7 @@ class UnitTest {
     void testTopCapitalCities() {
         //app.connect("localhost:33060");
 
+        //check city item is returned in the query
         ArrayList<City> tempCities = app.getTopNCapitalCitiesInWorld(3);
         City city = new City(2331,"Seoul","Korea","Seoul",9981619);
 
