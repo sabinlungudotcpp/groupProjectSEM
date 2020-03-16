@@ -14,7 +14,7 @@ public class App {
     private static ArrayList<String> listOfRegions = null; // Set to null initially
 
     public static void main(String[] args) {
-        App app = new App();
+        App app = new App(); // Creates a new instance of app
 
         app.connect("localhost:33060"); // Connect to the database
         listOfRegions = new ArrayList<String>();
@@ -53,81 +53,86 @@ public class App {
         App a = new App();
 
         // Connect to database
-        if (args.length < 1)
+        if (args.length < 1) // If the argum
         {
             a.connect("localhost:33060");
         }
         else
         {
-            a.connect(args[0]);
+            a.connect(args[0]); // Connect to the server
         }
 
-        // Disconnect from database
+        // Disconnect from database to prevent errors
         a.disconnect();
     }
 
 
-    private void printCountries(ArrayList<Country> countries) {
+    private void printCountries(ArrayList<Country> countries) { // Routine to print out the countries table, that returns nothing
         Object[][] countryTable = new String[countries.size()][];
 
-        String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"};
+        String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"}; // Used to add headers to the output table
 
-        for (int i = 0; i < countries.size(); i++) {
+        for (int i = 0; i < countries.size(); i++) { // Loop over the country
 
+            // Adds country data to the output array
             countryTable[i] = new String[]{String.valueOf(countries.get(i).getCode()), countries.get(i).getName(),
                     countries.get(i).getContinent(), countries.get(i).getRegion(), Integer.toString(countries.get(i).getCapital()),
                     Integer.toString(countries.get(i).getPopulation())};
         }
 
-        System.out.format("%25s%25s%25s%25s%25s%25s\n", header);
+        System.out.format("%25s%25s%25s%25s%25s%25s\n", header); // Displays the table headers
 
         for (final Object[] row : countryTable) {
-            System.out.format("%25s%25s%25s%25s%25s%25s\n", row);
+            System.out.format("%25s%25s%25s%25s%25s%25s\n", row); // Displays the table rows
         }
     }
 
-    private void printCities(ArrayList<City> cities) {
+    private void printCities(ArrayList<City> cities) { // Routine to print cities
         Object[][] cityTable = new String[cities.size()][];
 
-        String[] header = new String[]{"ID", "Name", "CountryCode", "District", "Population"};
+        String[] header = new String[]{"ID", "Name", "CountryCode", "District", "Population"}; // Used to add headers to the output table
 
         for (int i = 0; i < cities.size(); i++) {
 
+            // Adds city data to the output array
             cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(),
                     cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
         }
         System.out.println(cities.size());
-        System.out.format("%25s%25s%25s%25s%25s\n", header);
+        System.out.format("%25s%25s%25s%25s%25s\n", header); // Displays the table headers
 
         for (final Object[] row : cityTable) {
-            System.out.format("%25s%25s%25s%25s%25s\n", row);
+            System.out.format("%25s%25s%25s%25s%25s\n", row); // Displays the table rows
         }
     }
 
     private void printPopulation(ArrayList<PopulationData> populationData) {
         Object[][] populationTable = new String[populationData.size()][];
 
-        String[] header = new String[]{"Name", "Total Population", "City Population", "%", "Rural Population", "%"};
+        String[] header = new String[]{"Name", "Total Population", "City Population", "%", "Rural Population", "%"};  // Used to add headers to the output table
 
         for (int i = 0; i < populationData.size(); i++) {
 
+            // Adds population data to the output array
             populationTable[i] = new String[]{String.valueOf(populationData.get(i).getName()), Double.toString(populationData.get(i).getTotal_population()),
                     Double.toString(populationData.get(i).getLivingInCities()), Float.toString(populationData.get(i).getPercentageCities()), Double.toString(populationData.get(i).getNotLivingInCities()), Float.toString(populationData.get(i).getPercentageNotInCities())};
         }
+
         System.out.println(populationData.size());
-        System.out.format("%25s%25s%25s%25s%25s%25s\n", header);
+        System.out.format("%25s%25s%25s%25s%25s%25s\n", header); // Displays the table headers
 
         for (final Object[] row : populationTable) {
-            System.out.format("%25s%25s%25s%25s%25s%25s\n", row);
+            System.out.format("%25s%25s%25s%25s%25s%25s\n", row); // Displays the table rows
         }
     }
 
+
     public ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
-        String query = "SELECT * FROM country ORDER BY country.Population DESC";
+        String query = "SELECT * FROM country ORDER BY country.Population DESC"; // The query that selects all the data from the country table and order it by population
         return extractCountryData(query);
     }
 
-    public ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) { // Requirement 2 code
+    public ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) {  // Routine that gets the SQL query results for the first Requirement
         String myQuery = "SELECT * FROM country "
                 + " WHERE Continent = '" + continent.getContinent()
                 + "' ORDER BY country.Population DESC ";
@@ -143,11 +148,11 @@ public class App {
     }
 
     public ArrayList<Country> getTopNCountriesInAContinent(int limit, Continent continent) { // Routine that gets the SQL query results for the first Requirement
-        String myQuery = "SELECT * "
+        String myQuery = "SELECT * " // Query that selects the data from the country table where the continent is specified by the user.
                 + "FROM country "
                 + "WHERE continent = '" + continent
                 + "' ORDER BY country.Population DESC "
-                + "LIMIT " + limit;
+                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user
         return extractCountryData(myQuery);
     }
 
@@ -156,24 +161,24 @@ public class App {
                 + "FROM country "
                 + "WHERE region = '" + region
                 + "' ORDER BY country.Population DESC "
-                + "LIMIT " + limit;
+                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user
         return extractCountryData(myQuery);
     }
 
     public ArrayList<Country> getCountriesInRegionByLargestPopulation(String region) { // Requirement 2 code
-        String myQuery = "SELECT * FROM country "
+        String myQuery = "SELECT * FROM country " // Query that selects all the data from the country table where the region is specified by the user.
                 + " WHERE Region = '" + region
                 + "' ORDER BY country.Population DESC ";
 
-        return extractCountryData(myQuery);
+        return extractCountryData(myQuery); // Returns an array list of countries
     }
 
-    public ArrayList<City> getAllCitiesInWorld() {
+    public ArrayList<City> getAllCitiesInWorld() { // Routine to get all cities in a world
         String query = "SELECT * FROM city ORDER BY city.population DESC;";
         return extractCityData(query);
     }
 
-    public ArrayList<City> getAllCitiesInAContinent(Continent continent) {
+    public ArrayList<City> getAllCitiesInAContinent(Continent continent) { // Returns all cities in a continent
         String query = "SELECT * FROM city" +
                 " INNER JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE Continent = '" + continent.getContinent() +
@@ -190,7 +195,7 @@ public class App {
         return extractCityData(query);
     }
 
-    public ArrayList<City> getAllCitiesInACountry(String theCountry) {
+    public ArrayList<City> getAllCitiesInACountry(String theCountry) { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city" +
                 " JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE country.name = '" + theCountry +
@@ -199,7 +204,7 @@ public class App {
         return extractCityData(query);
     }
 
-    public ArrayList<City> getAllCitiesInADistrict(String theDistrict) {
+    public ArrayList<City> getAllCitiesInADistrict(String theDistrict) { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city" +
                 " JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE city.District = '" + theDistrict +
@@ -208,7 +213,7 @@ public class App {
         return extractCityData(query);
     }
 
-    public ArrayList<City> getTopNCitiesInTheWorld(int theLimit) {
+    public ArrayList<City> getTopNCitiesInTheWorld(int theLimit) { // This routine gets all the cities in a region by passing in an input region from the user.
         String theQuery = "SELECT * FROM city " +
                 "ORDER BY city.population DESC " +
                 "LIMIT " + theLimit;
@@ -216,7 +221,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) {
+    public ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) { // This routine gets all the cities in a region by passing in an input region from the user.
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Continent = '" + continent +
@@ -226,7 +231,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<City> getTopNCitiesInRegion(int theLimit, String theRegion) {
+    public ArrayList<City> getTopNCitiesInRegion(int theLimit, String theRegion) { // This routine gets all the cities in a region by passing in an input region from the user.
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Region = '" + theRegion +
@@ -236,7 +241,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<City> getTopNCitiesInADistrict(int theLimit, String theDistrict) {
+    public ArrayList<City> getTopNCitiesInADistrict(int theLimit, String theDistrict) { // This routine gets all the cities in a region by passing in an input region from the user.
         String theQuery = "SELECT * FROM city " +
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE District = '" + theDistrict +
@@ -246,7 +251,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<City> getAllCapitalCities() {
+    public ArrayList<City> getAllCapitalCities() { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
                 "WHERE country.Code IS NOT NULL " +
@@ -255,7 +260,7 @@ public class App {
         return extractCityData(query);
     }
 
-    public ArrayList<City> getAllCapitalCitiesInAContinent(Continent continent) {
+    public ArrayList<City> getAllCapitalCitiesInAContinent(Continent continent) { // This routine gets all the cities in a region by passing in an input region from the user.
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -265,7 +270,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<City> getAllCapitalCitiesInARegion(String theRegion) {
+    public ArrayList<City> getAllCapitalCitiesInARegion(String theRegion) { // This routine gets all the cities in a region by passing in an input region from the user.
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -278,7 +283,7 @@ public class App {
 
 
 
-    public ArrayList<City> getTopNCapitalCitiesInWorld(int n) {
+    public ArrayList<City> getTopNCapitalCitiesInWorld(int n) { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
                 "WHERE country.Code IS NOT NULL " +
@@ -288,7 +293,7 @@ public class App {
         return extractCityData(query);
     }
 
-    public ArrayList<City> getTopNCapitalCitiesInAContinent(int n, Continent continent) {
+    public ArrayList<City> getTopNCapitalCitiesInAContinent(int n, Continent continent) { // This routine gets all the cities in a region by passing in an input region from the user.
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -299,7 +304,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<City> getTopNCapitalCitiesInARegion(int n, String theRegion) {
+    public ArrayList<City> getTopNCapitalCitiesInARegion(int n, String theRegion) { // This routine gets all the cities in a region by passing in an input region from the user.
 
         String theQuery = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -310,7 +315,7 @@ public class App {
         return extractCityData(theQuery);
     }
 
-    public ArrayList<PopulationData> getCityPopulationContinents()
+    public ArrayList<PopulationData> getCityPopulationContinents() // This routine gets all the cities in a region by passing in an input region from the user.
     {
         String query = "SELECT cityPopulation.Continent, Continent_Population, City_Population, ((City_Population/Continent_Population) * 100) AS '(City_Population %)', (Continent_Population - City_Population) AS Rural_Population, (((Continent_Population - City_Population)/Continent_Population) * 100) AS '(Rural_Population %)'\n" +
                 "FROM\n" +
@@ -324,7 +329,7 @@ public class App {
         return extractPopulationData(query);
     }
 
-    public ArrayList<PopulationData> getCityPopulationRegion()
+    public ArrayList<PopulationData> getCityPopulationRegion() // This routine gets all the cities in a region by passing in an input region from the user.
     {
         String query = "SELECT cityPopulation.Region, Region_Population, City_Population, ((City_Population/Region_Population) * 100) AS '%', (Region_Population - City_Population) AS Rural_Population, (((Region_Population - City_Population)/Region_Population) * 100) AS '%'\n" +
                 "FROM\n" +
@@ -338,7 +343,7 @@ public class App {
         return extractPopulationData(query);
     }
 
-    public ArrayList<PopulationData> getCityPopulationCountry()
+    public ArrayList<PopulationData> getCityPopulationCountry() // This routine gets all the cities in a region by passing in an input region from the user.
     {
         String query = "SELECT cityPopulation.Country_Name, Country_Population, City_Population, ((City_Population/Country_Population) * 100) AS '%', (Country_Population - City_Population) AS Rural_Population, (((Country_Population - City_Population)/Country_Population) * 100) AS '%'\n" +
                 "FROM\n" +
@@ -352,10 +357,10 @@ public class App {
         return extractPopulationData(query);
     }
 
-    public ArrayList<PopulationData> extractPopulationData(String query) {
+    public ArrayList<PopulationData> extractPopulationData(String query) { // This returns the Population data
         try {
             ArrayList<PopulationData> temp_population = new ArrayList<PopulationData>();
-            Statement stmt = connection.createStatement(); // Create a connection statement
+            Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(query);
             while (set.next()) {
                 PopulationData populationData = new PopulationData(set.getString(1), set.getDouble(2),set.getDouble(3),set.getFloat(4),set.getDouble(5),set.getFloat(6));
@@ -369,27 +374,20 @@ public class App {
     }
 
 
-    public ArrayList<Country> extractCountryData(String query) {
+    public ArrayList<Country> extractCountryData(String query) { // This returns the required country fields
         try {
-
             ArrayList<Country> temp_countries = new ArrayList<Country>();
-            Statement stmt = connection.createStatement(); // Create a connection statement
+            Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(query);
-
             while (set.next()) {
                 Country country = new Country(set.getString("Code"), set.getString("Name"), set.getString("Continent"),
                         set.getString("Region"), set.getFloat("SurfaceArea"), set.getInt("IndepYear"),
                         set.getInt("Population"), set.getFloat("LifeExpectancy"), set.getFloat("GNP"),
-
                         set.getFloat("GNPOld"), set.getString("LocalName"), set.getString("GovernmentForm"),
                         set.getString("HeadOfState"), set.getInt("Capital"), set.getString("Code2"));
                 temp_countries.add(country);
-
-                //System.out.println(country.toString()); // Print all the data out
             }
-
             return temp_countries;
-
         } catch (SQLException exc) { // Catch exception
             System.out.println(exc.toString());
             return null;
@@ -398,50 +396,36 @@ public class App {
 
     private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
         try {
-            ArrayList<City> tempCities = new ArrayList<City>(); // A list of cities to get stored.
-
-            Statement statement = connection.createStatement();
+            ArrayList<City> tempCities = new ArrayList<City>();
+            Statement statement = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = statement.executeQuery(query);
-
-            while (set.next()) { // Loop over the next set
+            while (set.next()) {
                  City city = new City(set.getInt("ID"), set.getString("Name"),
                          set.getString("CountryCode"),
                          set.getString("District"),
                          set.getInt("Population"));
-
                  tempCities.add(city);
              }
-
              return tempCities;
-
         } catch (SQLException exc) {
-
             exc.printStackTrace();
-
             System.out.println(exc.getMessage());
-
         }
-
         return null;
     }
 
     private ArrayList<String> extractRegions() { // Returns a list of regions
-        ArrayList<String> temp_regions = new ArrayList<String>();
-
         try {
-
-            String myQuery = "SELECT DISTINCT Region FROM country "; // SQL query to get the region
-            Statement stmt = connection.createStatement(); // Create a connection statement
+            ArrayList<String> temp_regions = new ArrayList<String>();
+            String myQuery = "SELECT DISTINCT Region FROM country "; // Creates a list of regions for us to work with
+            Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(myQuery);
-
             while (set.next()) {
                 String region = set.getString("Region");
                 temp_regions.add(region);
             }
-
             return temp_regions;
-
-        } catch (SQLException exc) { // Catch exception
+        } catch (SQLException exc) {
             System.out.println(exc.toString());
             return null;
         }
@@ -450,7 +434,6 @@ public class App {
     public void disconnect() { // Routine to disconnect from the DB
         if (connection != null) {
             try {
-
                 connection.close();
             } catch (Exception e) {
                 System.out.println("Error connecting to db");
@@ -458,7 +441,7 @@ public class App {
         }
     }
 
-    public void connect(String location) {
+    public void connect(String location) { // Method to connect the docker container to the database
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -485,38 +468,4 @@ public class App {
             }
         }
     }
-
-    /*private void connect() { // Routine to connect to the DB
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-        } catch (ClassNotFoundException e) {
-
-            System.out.println("Could not load SQL Driver");
-            System.exit(-1);
-
-        }
-
-        int retries = 100;
-
-        for (int i = 0; i < retries; i++) {
-            System.out.println("Connecting to DB...");
-
-            try {
-                Thread.sleep(1000);
-                connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
-                System.out.println("Connect Success");
-                break;
-
-            } catch (SQLException exc) {
-
-                System.out.println("Failed to connect to DB. Attempt : " + i);
-
-            } catch (InterruptedException e) {
-
-                System.out.println("Thread failed");
-            }
-
-        }
-    }*/
 }

@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="grouproject" />
+        <module name="SEMProject" />
         <module name="World-Population-Java-SQL-Group-Project" />
         <module name="groupProjectSEM" />
-        <module name="grouproject" />
       </profile>
     </annotationProcessing>
   </component>
