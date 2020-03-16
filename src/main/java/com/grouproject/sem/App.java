@@ -72,7 +72,7 @@ public class App {
 
         String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"}; // An array of strings to print out
 
-        for (int i = 0; i < countries.size(); i++) { // Loop over the countr
+        for (int i = 0; i < countries.size(); i++) { // Loop over the country
 
             countryTable[i] = new String[]{String.valueOf(countries.get(i).getCode()), countries.get(i).getName(),
                     countries.get(i).getContinent(), countries.get(i).getRegion(), Integer.toString(countries.get(i).getCapital()),
@@ -82,11 +82,11 @@ public class App {
         System.out.format("%25s%25s%25s%25s%25s%25s\n", header);
 
         for (final Object[] row : countryTable) {
-            System.out.format("%25s%25s%25s%25s%25s%25s\n", row);
+            System.out.format("%25s%25s%25s%25s%25s%25s\n", row); // Format the output.
         }
     }
 
-    private void printCities(ArrayList<City> cities) {
+    private void printCities(ArrayList<City> cities) { // Routine to print cities
         Object[][] cityTable = new String[cities.size()][];
 
         String[] header = new String[]{"ID", "Name", "CountryCode", "District", "Population"};
@@ -123,7 +123,7 @@ public class App {
     }
 
     public ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
-        String query = "SELECT * FROM country ORDER BY country.Population DESC";
+        String query = "SELECT * FROM country ORDER BY country.Population DESC"; // The query that selects all the data from the country table and order it by population
         return extractCountryData(query);
     }
 
@@ -143,11 +143,11 @@ public class App {
     }
 
     public ArrayList<Country> getTopNCountriesInAContinent(int limit, Continent continent) { // Routine that gets the SQL query results for the first Requirement
-        String myQuery = "SELECT * "
+        String myQuery = "SELECT * " // Query that selects the data from the country table where the continent is specified by the user.
                 + "FROM country "
                 + "WHERE continent = '" + continent
                 + "' ORDER BY country.Population DESC "
-                + "LIMIT " + limit;
+                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user
         return extractCountryData(myQuery);
     }
 
@@ -161,14 +161,14 @@ public class App {
     }
 
     public ArrayList<Country> getCountriesInRegionByLargestPopulation(String region) { // Requirement 2 code
-        String myQuery = "SELECT * FROM country "
+        String myQuery = "SELECT * FROM country " // Query that selects all the data from the country table where the region is specified by the user.
                 + " WHERE Region = '" + region
                 + "' ORDER BY country.Population DESC ";
 
-        return extractCountryData(myQuery);
+        return extractCountryData(myQuery); // Returns an array list of countries
     }
 
-    public ArrayList<City> getAllCitiesInWorld() {
+    public ArrayList<City> getAllCitiesInWorld() { // Routine to get all cities in a world
         String query = "SELECT * FROM city ORDER BY city.population DESC;";
         return extractCityData(query);
     }
