@@ -1,57 +1,72 @@
 language: java
-
 sudo: false
-
 addons:
   hosts:
-    - db
-
+  - db
+env:
+  global:
+  - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - secure: LPTES7zQrs+XyuhqkuNe2CjMCq60xt7rNRcFF5BOOvV8EKaTC8QAkJ6Lin9EEC+ErThFF5PzaBolQIutaoBeatB1P5Jq+hm9nfhb7lvmdpXktNBpIBpvjn3Kodrko3/v45cGo91I3QlkbdIIrV+i9KQWHArOuBsU2WUZBbx2TR+mOY/JraylaywMU3ndZ/fgb7sXYYgOh5ALfRAP7D+p4Trya5+6lDMbTU4xhuSxFJWSaIpKTlbcDgC7kzlRUlE7SZxylv4MqqI27kw3MDS9dHvE6TMK81T5zhMnsMQNEXq6NUvNLtY94VoSYlF/ed0FFR4+Y96Z5unPL55No2acJhoWAdmp3GUEjQO2m8Q/pVb627cyXcl2kf4K2X8E7ZQyHRWQ9kP/L1IPV4l0DZ5yndmWbc/QRKnhevdU/F4yl5mQe8WZNyFwIAP49KTIDR7H9q6aMXhlEGMDYz8J3Md+IL3Wnw6GN1QyTyeE/Q8XoRnmYArOS5gHDh99j+4neKkg3q9rODLXR8i5VPfywXoeVwZWv9SOM+tIsHaTzqNL4jJ5H9OC/pW+kavhKtEnHS3osFAeEWCo99onQ6lkTrDBID6K2k5bcgIDyXleOymFF42ScOOMHLX0cFTCkwiaJb+Z4AfETvb9Y1JkZsWR8n44iJv4ENSiu4MUBs+6JjXUC6A=
 services:
-  - docker
-
+- docker
 install:
-  - docker build -t database dbb/.
-  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
+- docker build -t database dbb/.
+- docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 before_script:
-  - mvn clean
-
+- mvn clean
 jobs:
   include:
-    - stage: unit tests
-      #install: skip
-      jdk: oraclejdk11
-      script: mvn test -Dtest=com.grouproject.sem.UnitTest
-    - stage: integration tests
-      jdk: oraclejdk11
-      script: mvn test -Dtest=com.grouproject.sem.AppIntegrationTest
-    - stage: GitHub Release
-      install: skip
-      jdk: oraclejdk11
-      script:
-        - echo "Deploying to GitHub Releases"
-        - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
-      before_deploy:
-        # Set up git user name and tag this commit
-        - git config --local user.name "taylorc1009"
-        - git config --local user.email "taylorcourtney2000@googlemail.com"
-        # Create temporary tag from date and Git log.
-        - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
-        # Set tag
-        - git tag $TRAVIS_TAG
-      deploy:
-        provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
-        # Copy built JAR file.  JAR built in $TRAVIS_BUILD_DIR/
-        file: $TRAVIS_BUILD_DIR/target/grouproject.jar
-        skip_cleanup: true
-
+  - stage: unit tests
+    jdk: oraclejdk11
+    script: mvn test -Dtest=com.grouproject.sem.UnitTest
+  - stage: integration tests
+    jdk: oraclejdk11
+    script: mvn test -Dtest=com.grouproject.sem.AppIntegrationTest
+  - stage: GitHub Release
+    install: skip
+    jdk: oraclejdk11
+    script:
+    - echo "Deploying to GitHub Releases"
+    - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+    before_deploy:
+    - git config --local user.name "taylorc1009"
+    - git config --local user.email "taylorcourtney2000@googlemail.com"
+    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
+    - git tag $TRAVIS_TAG
+    deploy:
+      provider: releases
+      api_key: "$GITHUB_OAUTH_TOKEN"
+      file: "$TRAVIS_BUILD_DIR/target/grouproject.jar"
+      skip_cleanup: true
+  - stage: Google Cloud Deploy
+    install: skip
+    jdk: oraclejdk11
+    before_script:
+    - if [ ! -d ${HOME}/google-cloud-sdk ]; then curl https://sdk.cloud.google.com
+      | bash > /dev/null; fi
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud components install kubectl
+    - gcloud version
+    - gcloud auth activate-service-account --key-file client-secret.json
+    script:
+    - gcloud config set project grouproject-set08103
+    - gcloud config set compute/zone europe-west2-b
+    - export PROJECT_ID="$(gcloud config get-value project -q)"
+    - gcloud auth configure-docker
+    - docker build -t gcr.io/${PROJECT_ID}/db dbb/.
+    - docker push gcr.io/${PROJECT_ID}/db
+    - gcloud container clusters create hr-cluster --num-nodes=1
+    - kubectl run hr --image=gcr.io/${PROJECT_ID}/db --port 3306
+    - kubectl expose deployment hr --port=3306 --target-port=3306 --type=LoadBalancer
 stages:
-  - unit tests
-  - integration tests
-  - name: GitHub Release
-    if: branch = release
-
+- unit tests
+- integration tests
+- name: GitHub Release
+  if: branch = release
+- name: Google Cloud Deploy
+  if: branch = release
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+before_install: 
+- openssl aes-256-cbc -k "$grouproject_password" -in client-secret.json -out client-secret.json.enc
