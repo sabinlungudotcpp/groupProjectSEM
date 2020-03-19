@@ -48,6 +48,7 @@ jobs:
     - source $HOME/google-cloud-sdk/path.bash.inc
     - gcloud components install kubectl
     - gcloud version
+    - openssl aes-256-cbc -k "$grouproject_password" -in client-secret.json.enc -out client-secret.json
     - gcloud auth activate-service-account --key-file client-secret.json
     script:
     - gcloud config set project grouproject-set08103
@@ -68,5 +69,3 @@ stages:
   if: branch = release
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-before_install: 
-- openssl aes-256-cbc -k "$grouproject_password" -in client-secret.json.enc -out client-secret.json
