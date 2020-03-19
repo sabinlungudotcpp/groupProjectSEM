@@ -40,7 +40,7 @@ jobs:
       file: "$TRAVIS_BUILD_DIR/target/grouproject.jar"
       skip_cleanup: true
   - stage: Google Cloud Deploy
-    install: skip
+    #install: skip
     jdk: oraclejdk11
     before_script:
     - if [ ! -d ${HOME}/google-cloud-sdk ]; then curl https://sdk.cloud.google.com
