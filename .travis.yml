@@ -55,7 +55,7 @@ jobs:
       - unit tests
       - integration tests
       - name: GitHub Release
-          if: branch = master
+          if: branch = release
 
     after_success:
       - bash <(curl -s https://codecov.io/bash)
