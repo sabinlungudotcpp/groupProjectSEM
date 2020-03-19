@@ -10,7 +10,7 @@ services:
   - docker
 
 install:
-  - docker build -t database db/.
+  - docker build -t database dbb/.
   - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
