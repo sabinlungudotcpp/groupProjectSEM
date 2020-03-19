@@ -20,7 +20,7 @@ before_script:
 jobs:
   include:
     - stage: unit tests
-      install: skip
+      #install: skip
       jdk: oraclejdk11
       script: mvn test -Dtest=com.grouproject.sem.UnitTest
     - stage: integration tests
