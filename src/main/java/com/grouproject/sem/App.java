@@ -6,7 +6,7 @@ import java.util.ArrayList;
 // Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
 // Date of Last Modified: 7/02/2020
 // Purpose of Application: To write SQL queries embedded in Java code to retrieve the data required for the requirements.
-// Bugs?: Currently none
+// Cloud Platform ID: grouproject-set08103
 
 public class App {
 
