@@ -69,4 +69,4 @@ stages:
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 before_install: 
-- openssl aes-256-cbc -k "$grouproject_password" -in client-secret.json -out client-secret.json.enc
+- openssl aes-256-cbc -k "$grouproject_password" -in client-secret.json.enc -out client-secret.json
