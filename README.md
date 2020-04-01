@@ -277,3 +277,8 @@ The requirements that we had to write SQL queries for are:
 
 ### Description of Function
 > Disconnects from the database when no longer in use to prevent errors.
+
+<img width="469" alt="DisconnectMethod" src="https://user-images.githubusercontent.com/29733613/78162978-93397780-743f-11ea-9ff0-5e86f910fbef.png">
+
+### Parameters
+> This method takes no parameters because its only function is to disconnect from the running process.
