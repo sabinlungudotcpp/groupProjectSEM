@@ -42,6 +42,59 @@ Finally as a team we are making use of different branches where each member of t
 - License [![LICENSE](https://img.shields.io/github/license/kevin-chalmers/sem.svg?style=flat-square)](https://github.com/kevin-chalmers/sem/blob/master/LICENSE)
 - Release [![Build Status](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project.svg?branch=release)](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project)
 
+# User Stories
+Before implementing the solutions for the requirements, the following User Stories are to be taken into consideration.
+
+> 1.**As a researcher, I want a report of all the countries in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.**
+
+As a researcher, I want a report of all the countries in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the countries in a region organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated countries in the world where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated countries in a continent where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated countries in a region where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the cities in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the cities in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the cities in a region organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the cities in a country organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the cities in a district organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated cities in a country where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated cities in a district where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the capital cities in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the capital cities in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of all the capital cities in a region organised by largest to smallest so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated capital cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated capital cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the top N populated capital cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each continent so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each region so that the organisation is more informed about the data of the population.
+
+As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each country so that the organisation is more informed about the data of the population.
+
 # Product Backlog :book:
 This section will contain a list of requirements that have been put into a product backlog. As a group we are required to write Java code and SQL queries in order to extract the database results for each of the requirements. As a group we are using Travis Continuous Integration which allows us to continuously test and build this project after we make ***Commits*** and ***Pushes*** which are crucial features of Version Control using Git. 
 
