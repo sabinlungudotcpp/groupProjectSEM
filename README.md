@@ -126,13 +126,13 @@ The requirements that we had to write SQL queries for are:
 
 > **13. The top N populated cities in a continent where N is provided by the user.**
 
-> The top N populated cities in a region where N is provided by the user.
+> **14. The top N populated cities in a region where N is provided by the user.**
 
-> The top N populated cities in a country where N is provided by the user.
+> **15. The top N populated cities in a country where N is provided by the user.**
 
-> The top N populated cities in a district where N is provided by the user.
+> **16. The top N populated cities in a district where N is provided by the user.**
 
-> All the capital cities in the world organised by largest population to smallest.
+> **17. All the capital cities in the world organised by largest population to smallest.
 
 > All the capital cities in a continent organised by largest population to smallest.
 
@@ -197,8 +197,11 @@ Arabic.
 **A city report requires the following columns:**
 
 Name.
+
 Country.
+
 District.
+
 Population.
 
 # Capital City Report
@@ -206,7 +209,9 @@ Population.
 **A capital city report requires the following columns:**
 
 Name.
+
 Country.
+
 Population.
 
 # Population Report
