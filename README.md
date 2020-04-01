@@ -258,6 +258,6 @@ The requirements that we had to write SQL queries for are:
 
 # Software Project Documentation
 
-# Connect to Database Method
+## Connect to Database Method##
 
-> **public void connect(String location)
+> **public void connect(String location)**
