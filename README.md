@@ -71,11 +71,11 @@ Before implementing the solutions for the requirements, the following User Stori
 
 > **13. As a researcher, I want a report of the top N populated cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.
+> **14. As a researcher, I want a report of the top N populated cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated cities in a country where N is provided by the user so that the organisation is more informed about the data of the population.
+> **15. As a researcher, I want a report of the top N populated cities in a country where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated cities in a district where N is provided by the user so that the organisation is more informed about the data of the population.
+> **16. As a researcher, I want a report of the top N populated cities in a district where N is provided by the user so that the organisation is more informed about the data of the population.**
 
 As a researcher, I want a report of all the capital cities in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.
 
@@ -132,11 +132,11 @@ The requirements that we had to write SQL queries for are:
 
 > **16. The top N populated cities in a district where N is provided by the user.**
 
-> **17. All the capital cities in the world organised by largest population to smallest.
+> **17. All the capital cities in the world organised by largest population to smallest.**
 
-> All the capital cities in a continent organised by largest population to smallest.
+> **18. All the capital cities in a continent organised by largest population to smallest.**
 
-> All the capital cities in a region organised by largest to smallest.
+> **19. All the capital cities in a region organised by largest to smallest.**
 
 > The top N populated capital cities in the world where N is provided by the user.
 
