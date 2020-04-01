@@ -262,8 +262,6 @@ The requirements that we had to write SQL queries for are:
 
 > public void connect(String location)
 
-
-
 ### Description of Function
 > Connects to the MySQL Database.
 
@@ -271,3 +269,11 @@ The requirements that we had to write SQL queries for are:
 
 ### Parameters
 > String location: This identifies the location of where to connect to.
+
+
+### Disconnect Method
+
+> public void disconnect()
+
+### Description of Function
+> Disconnects from the database when no longer in use to prevent errors.
