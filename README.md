@@ -8,8 +8,20 @@
 
 > Sadeem Rashid
 
-# Purpose of Agile Group Project :runner:
-A "virtual company" gave us a long list of requirements to work through regarding the world population and in an Agile Development Environment, our group have to write SQL code embedded in Java by making use of the Java Database Connectivity Driver (JDBC) to solve the requirements given to us and generate different reports for the company. 
+# Agile Project Proposal :runner:
+A company gave us a list of requirements that they would like for us to complete regarding the world population. The product backlog can be found further down in the **Product Backlog** section. The company wants us to create different types of reports, for example creating a report for **Cities** or a report for the **Population** in the world.
+
+The reports are meant to be worked on after retrieving the correct data for the requirements using SQL queries as all of the required data is held in a relational database.
+
+As a  group we have also implemented **Unit Testing** and **Integration Testing** to ensure that the correct results are being retrieved. This is done by the Unit Tests. We have also implemented integration testing which is used to test each module independetly.
+
+In our project we have 2 different **Docker Containers** that controls the application.
+
+> **1. Docker Container for the Application.
+
+> **2. Docker container for the SQL Database.
+
+Therefore these 2 containers are tested to ensure that they run properly and communicate with each other in order for the application to work as a whole unit.
 
 # Code Of Conduct :bookmark:
 
