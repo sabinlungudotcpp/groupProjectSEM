@@ -31,7 +31,7 @@ A "virtual company" gave us a long list of requirements to work through regardin
 # Product Backlog
 This section will contain a list of requirements that have been put into a product backlog. As a group we are required to write Java code and SQL queries in order to extract the database results for each of the requirements. As a group we are using Travis Continuous Integration which allows us to continuously test and build this project after we make ***Commits*** and ***Pushes*** which are crucial features of Version Control using Git.
 
-> All the countries in the world organised by largest population to smallest.
+> ***All the countries in the world organised by largest population to smallest.***
 
 > All the countries in a continent organised by largest population to smallest.
 
@@ -53,20 +53,34 @@ This section will contain a list of requirements that have been put into a produ
 
 > All the cities in a district organised by largest population to smallest.
 
-The top N populated cities in the world where N is provided by the user.
-The top N populated cities in a continent where N is provided by the user.
-The top N populated cities in a region where N is provided by the user.
-The top N populated cities in a country where N is provided by the user.
-The top N populated cities in a district where N is provided by the user.
-All the capital cities in the world organised by largest population to smallest.
-All the capital cities in a continent organised by largest population to smallest.
+> The top N populated cities in the world where N is provided by the user.
+
+> The top N populated cities in a continent where N is provided by the user.
+
+> The top N populated cities in a region where N is provided by the user.
+
+> The top N populated cities in a country where N is provided by the user.
+
+> The top N populated cities in a district where N is provided by the user.
+
+> All the capital cities in the world organised by largest population to smallest.
+
+> All the capital cities in a continent organised by largest population to smallest.
+
 All the capital cities in a region organised by largest to smallest.
+
 The top N populated capital cities in the world where N is provided by the user.
+
 The top N populated capital cities in a continent where N is provided by the user.
+
 The top N populated capital cities in a region where N is provided by the user.
+
 The population of people, people living in cities, and people not living in cities in each continent.
+
 The population of people, people living in cities, and people not living in cities in each region.
+
 The population of people, people living in cities, and people not living in cities in each country.
+
 Additionally, the following information should be accessible to the organisation:
 
 The population of the world.
