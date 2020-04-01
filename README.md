@@ -77,11 +77,11 @@ Before implementing the solutions for the requirements, the following User Stori
 
 > **16. As a researcher, I want a report of the top N populated cities in a district where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of all the capital cities in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.
+> **17. As a researcher, I want a report of all the capital cities in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of all the capital cities in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.
+> **18. As a researcher, I want a report of all the capital cities in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of all the capital cities in a region organised by largest to smallest so that the organisation is more informed about the data of the population.
+> **19. As a researcher, I want a report of all the capital cities in a region organised by largest to smallest so that the organisation is more informed about the data of the population.**
 
 As a researcher, I want a report of the top N populated capital cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.
 
