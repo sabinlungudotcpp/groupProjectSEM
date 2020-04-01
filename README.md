@@ -28,16 +28,16 @@ A "virtual company" gave us a long list of requirements to work through regardin
 - License [![LICENSE](https://img.shields.io/github/license/kevin-chalmers/sem.svg?style=flat-square)](https://github.com/kevin-chalmers/sem/blob/master/LICENSE)
 - Release [![Build Status](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project.svg?branch=release)](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project)
 
-# Product Backlog
+# Product Backlog :book:
 This section will contain a list of requirements that have been put into a product backlog. As a group we are required to write Java code and SQL queries in order to extract the database results for each of the requirements. As a group we are using Travis Continuous Integration which allows us to continuously test and build this project after we make ***Commits*** and ***Pushes*** which are crucial features of Version Control using Git. 
 
 The requirements that we had to write SQL queries for are:
 
-> ***All the countries in the world organised by largest population to smallest.***
+> **1.  All the countries in the world organised by largest population to smallest.**
 
-> 1. All the countries in a continent organised by largest population to smallest.
+> **2.  All the countries in a continent organised by largest population to smallest.**
 
-> 2. All the countries in a region organised by largest population to smallest.
+> **3.  All the countries in a region organised by largest population to smallest.
 
 > The top N populated countries in the world where N is provided by the user.
 
