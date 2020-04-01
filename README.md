@@ -65,11 +65,11 @@ Before implementing the solutions for the requirements, the following User Stori
 
 > **10. As a researcher, I want a report of all the cities in a country organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of all the cities in a district organised by largest population to smallest so that the organisation is more informed about the data of the population.
+> **11. As a researcher, I want a report of all the cities in a district organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.
+> **12. As a researcher, I want a report of the top N populated cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.
+> **13. As a researcher, I want a report of the top N populated cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.**
 
 As a researcher, I want a report of the top N populated cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.
 
