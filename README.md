@@ -168,43 +168,43 @@ The requirements that we had to write SQL queries for are:
 
 > **Finally, the organisation has asked if it is possible to provide the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population:**
 
-> Chinese.
+> **Chinese.**
 
-> English.
+> **English.**
 
-> Hindi.
+> **Hindi.**
 
-> Spanish.
+> **Spanish.**
 
-> Arabic.
+> **Arabic.**
 
 # Country Report
 
 **A country report requires the following columns:**
 
-> Code.
+> **Code.**
 
-> Name.
+> **Name.**
 
-> Continent.
+> **Continent.**
 
-> Region.
+> **Region.**
 
-> Population.
+> **Population.**
 
-> Capital.
+> **Capital.**
 
 # City Report
 
 **A city report requires the following columns:**
 
-> Name.
+> **Name.**
 
-> Country.
+> **Country.**
 
-> District.
+> **District.**
 
-> Population.
+> **Population.**
 
 # Capital City Report
 
