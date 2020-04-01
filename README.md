@@ -17,11 +17,13 @@ As a  group we have also implemented **Unit Testing** and **Integration Testing*
 
 In our project we have 2 different **Docker Containers** that controls the application.
 
-> **1. Docker Container for the Application.
+> **1. Docker Container for the Application.**
 
-> **2. Docker container for the SQL Database.
+> **2. Docker container for the SQL Database.**
 
 Therefore these 2 containers are tested to ensure that they run properly and communicate with each other in order for the application to work as a whole unit.
+
+Finally as a team we are making use of different branches where each member of the team works on a seperate branch in order to implement a new working feature for the application.
 
 # Code Of Conduct :bookmark:
 
