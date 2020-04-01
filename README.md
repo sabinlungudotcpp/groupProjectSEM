@@ -83,17 +83,17 @@ Before implementing the solutions for the requirements, the following User Stori
 
 > **19. As a researcher, I want a report of all the capital cities in a region organised by largest to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated capital cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.
+> **20. As a researcher, I want a report of the top N populated capital cities in the world where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated capital cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.
+> **21. As a researcher, I want a report of the top N populated capital cities in a continent where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated capital cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.
+> **22. As a researcher, I want a report of the top N populated capital cities in a region where N is provided by the user so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each continent so that the organisation is more informed about the data of the population.
+> **23. As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each continent so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each region so that the organisation is more informed about the data of the population.
+> **24. As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each region so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each country so that the organisation is more informed about the data of the population.
+> **25. As a researcher, I want a report of the population of people, people living in cities, and people not living in cities in each country so that the organisation is more informed about the data of the population.**
 
 # Product Backlog :book:
 This section will contain a list of requirements that have been put into a product backlog. As a group we are required to write Java code and SQL queries in order to extract the database results for each of the requirements. As a group we are using Travis Continuous Integration which allows us to continuously test and build this project after we make ***Commits*** and ***Pushes*** which are crucial features of Version Control using Git. 
@@ -138,21 +138,21 @@ The requirements that we had to write SQL queries for are:
 
 > **19. All the capital cities in a region organised by largest to smallest.**
 
-> The top N populated capital cities in the world where N is provided by the user.
+> **20. The top N populated capital cities in the world where N is provided by the user.**
 
-> The top N populated capital cities in a continent where N is provided by the user.
+> **21. The top N populated capital cities in a continent where N is provided by the user.**
 
-> The top N populated capital cities in a region where N is provided by the user.
+> **22. The top N populated capital cities in a region where N is provided by the user.**
 
-> The population of people, people living in cities, and people not living in cities in each continent.
+> **23. The population of people, people living in cities, and people not living in cities in each continent.**
 
-> The population of people, people living in cities, and people not living in cities in each region.
+> **24. The population of people, people living in cities, and people not living in cities in each region.**
 
-> The population of people, people living in cities, and people not living in cities in each country.
+> **25. The population of people, people living in cities, and people not living in cities in each country.**
 
 **Additionally, the following information should be accessible to the organisation:**
 
-The population of the world.
+> **The population of the world.**
 
 The population of a continent.
 
