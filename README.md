@@ -25,6 +25,34 @@ Therefore these 2 containers are tested to ensure that they run properly and com
 
 Finally as a team we are making use of different branches where each member of the team works on a seperate branch in order to implement a new working feature for the application.
 
+# How to build & run the application?
+
+> 1. Go to your current directory, wherever that may be using the command in the command line: > cd <your current directory>
+  
+> 2. After you have created the directory, in the command line type the command: > mkdir <name your folder>
+  
+> 3. After you have created a folder within a folder, in the command line type the command to clone the repository: > git clone <URL goes here> to clone the repository from the GitHub repo.
+
+> 4. Next, open IntelliJ IDEA and choose "Open project from existing sources"
+
+> 5. Wait a bit for the project to load. After the project has been loaded, **Build** the project to make sure that the projects builds before it can run. You can do this by clicking the green hammer next to the run button.
+
+> 6. The project should build without any problems. After the project has been built go to the right hand side of the project and choose the **Maven** option.
+
+> 7. Double click on **Clean**
+
+> 8. Click **Package**
+
+> 9. Navigate over on the left hand side of the project and open the **docker-compose.yml** file
+
+> 10. Also go to the **dbb** folder and open the **Dockerfile** file.
+
+> 11. In the **docker-compose.yml** file, click the green button next to **dbb** in order to run the Database Container.
+
+> 12. After the database container has been initialised, do the same for the app.
+
+> 13. Go in the Dockerfile file and click the two green buttons next to **FROM MySQL** to run the image.
+
 # Code Of Conduct :bookmark:
 
 1. All members must attend meetings.
