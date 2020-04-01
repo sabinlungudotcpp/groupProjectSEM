@@ -154,29 +154,29 @@ The requirements that we had to write SQL queries for are:
 
 > **The population of the world.**
 
-The population of a continent.
+> **The population of a continent.**
 
-The population of a region.
+> **The population of a region.**
 
-The population of a country.
+> **The population of a country.**
 
-The population of a district.
+> **The population of a district.**
 
-The population of a city.
+> **The population of a city.**
 
 # Languages Report
 
 > **Finally, the organisation has asked if it is possible to provide the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population:**
 
-Chinese.
+> Chinese.
 
-English.
+> English.
 
-Hindi.
+> Hindi.
 
-Spanish.
+> Spanish.
 
-Arabic.
+> Arabic.
 
 # Country Report
 
@@ -198,13 +198,13 @@ Arabic.
 
 **A city report requires the following columns:**
 
-Name.
+> Name.
 
-Country.
+> Country.
 
-District.
+> District.
 
-Population.
+> Population.
 
 # Capital City Report
 
@@ -222,8 +222,8 @@ Population.
 
 > **The name of the continent/region/country.**
 
-The total population of the continent/region/country.
+> **The total population of the continent/region/country.**
 
-The total population of the continent/region/country living in cities (including a %).
+> **The total population of the continent/region/country living in cities (including a %).**
 
-The total population of the continent/region/country not living in cities (including a %).
+> **The total population of the continent/region/country not living in cities (including a %).**
