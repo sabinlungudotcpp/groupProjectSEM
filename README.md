@@ -55,23 +55,23 @@ The requirements that we had to write SQL queries for are:
 
 > **4.  The top N populated countries in the world where N is provided by the user.**
 
-> **5   The top N populated countries in a continent where N is provided by the user.
+> **5   The top N populated countries in a continent where N is provided by the user.**
 
-> **6.  The top N populated countries in a region where N is provided by the user.
+> **6.  The top N populated countries in a region where N is provided by the user.**
 
-> **7.  All the cities in the world organised by largest population to smallest.
+> **7.  All the cities in the world organised by largest population to smallest.**
 
-> **8.  All the cities in a continent organised by largest population to smallest.
+> **8.  All the cities in a continent organised by largest population to smallest.**
 
-> All the cities in a region organised by largest population to smallest.
+> **9.  All the cities in a region organised by largest population to smallest.**
 
-> All the cities in a country organised by largest population to smallest.
+> **10. All the cities in a country organised by largest population to smallest.**
 
-> All the cities in a district organised by largest population to smallest.
+> **11. All the cities in a district organised by largest population to smallest.**
 
-> The top N populated cities in the world where N is provided by the user.
+> **12. The top N populated cities in the world where N is provided by the user.**
 
-> The top N populated cities in a continent where N is provided by the user.
+> **13. The top N populated cities in a continent where N is provided by the user.**
 
 > The top N populated cities in a region where N is provided by the user.
 
@@ -144,6 +144,9 @@ Population Report
 For the population reports, the following information is requested:
 
 The name of the continent/region/country.
+
 The total population of the continent/region/country.
+
 The total population of the continent/region/country living in cities (including a %).
+
 The total population of the continent/region/country not living in cities (including a %).
