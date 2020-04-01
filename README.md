@@ -255,3 +255,9 @@ The requirements that we had to write SQL queries for are:
 > **The total population of the continent/region/country living in cities (including a %).**
 
 > **The total population of the continent/region/country not living in cities (including a %).**
+
+# Software Project Documentation
+
+# Connect to Database Method
+
+> **public void connect(String location)
