@@ -262,5 +262,9 @@ The requirements that we had to write SQL queries for are:
 
 > public void connect(String location)
 
+
+
 ### Description of Function
 > Connects to the MySQL Database.
+
+<img width="962" alt="ConnectDB Image" src="https://user-images.githubusercontent.com/29733613/78162520-e4953700-743e-11ea-88f1-a35e203ee303.png">
