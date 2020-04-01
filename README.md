@@ -45,13 +45,13 @@ Finally as a team we are making use of different branches where each member of t
 # User Stories
 Before implementing the solutions for the requirements, the following User Stories are to be taken into consideration.
 
-> 1.**As a researcher, I want a report of all the countries in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.**
+> **1.  As a researcher, I want a report of all the countries in the world organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of all the countries in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.
+> **2.  As a researcher, I want a report of all the countries in a continent organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of all the countries in a region organised by largest population to smallest so that the organisation is more informed about the data of the population.
+> **3.  As a researcher, I want a report of all the countries in a region organised by largest population to smallest so that the organisation is more informed about the data of the population.**
 
-As a researcher, I want a report of the top N populated countries in the world where N is provided by the user so that the organisation is more informed about the data of the population.
+> **4.  As a researcher, I want a report of the top N populated countries in the world where N is provided by the user so that the organisation is more informed about the data of the population.**
 
 As a researcher, I want a report of the top N populated countries in a continent where N is provided by the user so that the organisation is more informed about the data of the population.
 
