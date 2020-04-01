@@ -260,4 +260,7 @@ The requirements that we had to write SQL queries for are:
 
 ### Connect to Database Method
 
-> **public void connect(String location)**
+> public void connect(String location)
+
+### Description of Function
+> Connects to the MySQL Database.
