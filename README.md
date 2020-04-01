@@ -114,34 +114,51 @@ The population of a city.
 Finally, the organisation has asked if it is possible to provide the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population:
 
 Chinese.
-English.
-Hindi.
-Spanish.
-Arabic.
-Country Report
-A country report requires the following columns:
 
-Code.
-Name.
-Continent.
-Region.
-Population.
-Capital.
-City Report
-A city report requires the following columns:
+English.
+
+Hindi.
+
+Spanish.
+
+Arabic.
+
+# Country Report
+
+**A country report requires the following columns:**
+
+> Code.
+
+> Name.
+
+> Continent.
+
+> Region.
+
+> Population.
+
+> Capital.
+
+# City Report
+
+**A city report requires the following columns:**
 
 Name.
 Country.
 District.
 Population.
-Capital City Report
-A capital city report requires the following columns:
+
+# Capital City Report
+
+**A capital city report requires the following columns:**
 
 Name.
 Country.
 Population.
-Population Report
-For the population reports, the following information is requested:
+
+# Population Report
+
+**For the population reports, the following information is requested:**
 
 The name of the continent/region/country.
 
