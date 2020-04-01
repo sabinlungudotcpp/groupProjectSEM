@@ -29,13 +29,15 @@ A "virtual company" gave us a long list of requirements to work through regardin
 - Release [![Build Status](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project.svg?branch=release)](https://travis-ci.com/sabinlungudotcpp/World-Population-Java-SQL-Group-Project)
 
 # Product Backlog
-This section will contain a list of requirements that have been put into a product backlog. As a group we are required to write Java code and SQL queries in order to extract the database results for each of the requirements. As a group we are using Travis Continuous Integration which allows us to continuously test and build this project after we make ***Commits*** and ***Pushes*** which are crucial features of Version Control using Git.
+This section will contain a list of requirements that have been put into a product backlog. As a group we are required to write Java code and SQL queries in order to extract the database results for each of the requirements. As a group we are using Travis Continuous Integration which allows us to continuously test and build this project after we make ***Commits*** and ***Pushes*** which are crucial features of Version Control using Git. 
+
+The requirements that we had to write SQL queries for are:
 
 > ***All the countries in the world organised by largest population to smallest.***
 
-> All the countries in a continent organised by largest population to smallest.
+> 1. All the countries in a continent organised by largest population to smallest.
 
-> All the countries in a region organised by largest population to smallest.
+> 2. All the countries in a region organised by largest population to smallest.
 
 > The top N populated countries in the world where N is provided by the user.
 
@@ -67,28 +69,34 @@ This section will contain a list of requirements that have been put into a produ
 
 > All the capital cities in a continent organised by largest population to smallest.
 
-All the capital cities in a region organised by largest to smallest.
+> All the capital cities in a region organised by largest to smallest.
 
-The top N populated capital cities in the world where N is provided by the user.
+> The top N populated capital cities in the world where N is provided by the user.
 
-The top N populated capital cities in a continent where N is provided by the user.
+> The top N populated capital cities in a continent where N is provided by the user.
 
-The top N populated capital cities in a region where N is provided by the user.
+> The top N populated capital cities in a region where N is provided by the user.
 
-The population of people, people living in cities, and people not living in cities in each continent.
+> The population of people, people living in cities, and people not living in cities in each continent.
 
-The population of people, people living in cities, and people not living in cities in each region.
+> The population of people, people living in cities, and people not living in cities in each region.
 
-The population of people, people living in cities, and people not living in cities in each country.
+> The population of people, people living in cities, and people not living in cities in each country.
 
-Additionally, the following information should be accessible to the organisation:
+**Additionally, the following information should be accessible to the organisation:**
 
 The population of the world.
+
 The population of a continent.
+
 The population of a region.
+
 The population of a country.
+
 The population of a district.
+
 The population of a city.
+
 Finally, the organisation has asked if it is possible to provide the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population:
 
 Chinese.
