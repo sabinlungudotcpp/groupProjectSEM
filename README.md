@@ -270,7 +270,6 @@ The requirements that we had to write SQL queries for are:
 ### Parameters
 > String location: This identifies the location of where to connect to.
 
-
 ### Disconnect Method
 
 > public void disconnect()
@@ -278,7 +277,30 @@ The requirements that we had to write SQL queries for are:
 ### Description of Function
 > Disconnects from the database when no longer in use to prevent errors.
 
+### Method Implementation Screenshot
 <img width="469" alt="DisconnectMethod" src="https://user-images.githubusercontent.com/29733613/78162978-93397780-743f-11ea-9ff0-5e86f910fbef.png">
 
 ### Parameters
 > This method takes no parameters because its only function is to disconnect from the running process.
+
+### Get Countries By Population ###
+
+### Description of Function ###
+
+> This function is responsible for retrieving all the countries from the countries table of the database and orders it by population in descending order.
+
+### Get Countries By Population Method Implementation ###
+
+> public ArrayList<Country> getAllCountriesOrderByPopulation(String ID);
+  
+### Method Parameters
+
+> String ID: The unique ID of the country that is specified by the user in order to retrieve the country with that ID.
+
+### Method Implementation Screenshot
+
+<img width="944" alt="Requirement 1 - Get Countries by Population" src="https://user-images.githubusercontent.com/29733613/78450957-442b5680-767a-11ea-82c4-42d1a6672dc9.png">
+
+<img width="907" alt="Requirement 1 - Data Results" src="https://user-images.githubusercontent.com/29733613/78450956-4392c000-767a-11ea-9972-f03c838cb579.png">
+
+### Method Im
