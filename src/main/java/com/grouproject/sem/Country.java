@@ -105,7 +105,7 @@ public class Country { // Country class
     }
 
     public float getGNP() {
-        return GNP;
+        return this.GNP;
     }
 
     public void setGNP(float GNP) {

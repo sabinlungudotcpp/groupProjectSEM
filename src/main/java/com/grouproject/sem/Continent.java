@@ -1,6 +1,6 @@
 package com.grouproject.sem;
 
-public enum Continent {
+public enum Continent { // Continent enum
     ASIA("Asia"),
     EUROPE("Europe"),
     NORTH_AMERICA("North America"),
@@ -12,12 +12,11 @@ public enum Continent {
     private String continent;
 
 
-     Continent(String continent) {
+    Continent(String continent) {
         this.continent = continent;
     }
 
-    public String getContinent() {
+    public String getContinent() { // Retrieves the continent
         return this.continent;
     }
-
  }

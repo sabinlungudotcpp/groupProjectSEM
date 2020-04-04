@@ -372,18 +372,17 @@ public class App {
         return extractPopulationData(query);
     }
 
-    public ArrayList<PopulationData> extractPopulationData(String query) { // This returns the Population data
+    public ArrayList<PopulationData> extractPopulationData(String query) { // Method responsible for extracting the population data from the SQL database.
         try {
             ArrayList<PopulationData> temp_population = new ArrayList<PopulationData>();
             Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(query);
 
 
-            while (set.next()) {
+            while (set.next()) { // Loop over the result set
                 PopulationData populationData = new PopulationData(set.getString(1), set.getDouble(2),set.getDouble(3),set.getFloat(4),set.getDouble(5),set.getFloat(6));
                 temp_population.add(populationData);
             }
-
 
             return temp_population;
         } catch (SQLException exc) { // Catch exception
@@ -432,7 +431,7 @@ public class App {
             }
 
             return temp_regions; // Return the regions from the array list
-        } catch (SQLException exc) {
+        } catch (SQLException exc) { // Catch the SQL exception
             System.out.println(exc.toString());
             return null;
         }

@@ -17,8 +17,8 @@ public class PopulationData {
         this.percentageNotInCities = percentageNotInCities;
     }
 
-    public float getPercentageCities() {
-        return percentageCities;
+    public float getPercentageCities() { // Returns the city percentages as a float
+        return this.percentageCities;
     }
 
     public void setPercentageCities(float percentageCities) {
@@ -63,5 +63,36 @@ public class PopulationData {
 
     public void setNotLivingInCities(double notLivingInCities) {
         this.notLivingInCities = notLivingInCities;
+    }
+
+    @Override
+    public boolean equals(Object theObject) { // Determines if the objects are equal
+        if (this == theObject) { // If this current instance is equal to the object. If they are in the same memory location
+            return true; // Return true.
+        }
+
+        if (!(theObject instanceof PopulationData)) { // If the object is not an instance of population data
+
+            return false; // Return false
+        }
+
+        PopulationData populationData = (PopulationData) theObject;
+        return Double.compare(populationData.getTotal_population(), getTotal_population()) == 0 &&
+                Double.compare(populationData.getLivingInCities(), getLivingInCities()) == 0 &&
+                Float.compare(populationData.getPercentageCities(), getPercentageCities()) == 0 &&
+                Double.compare(populationData.getNotLivingInCities(), getNotLivingInCities()) == 0 &&
+                Float.compare(populationData.getPercentageNotInCities(), getPercentageNotInCities()) == 0;
+    }
+
+    @Override
+    public String toString() { // To String method to print the data if required.
+        return "PopulationData{" +
+                "name='" + name + '\'' +
+                ", total_population=" + total_population +
+                ", livingInCities=" + livingInCities +
+                ", percentageCities=" + percentageCities +
+                ", notLivingInCities=" + notLivingInCities +
+                ", percentageNotInCities=" + percentageNotInCities +
+                '}';
     }
 }
