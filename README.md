@@ -25,6 +25,16 @@ Therefore these 2 containers are tested to ensure that they run properly and com
 
 Finally as a team we are making use of different branches where each member of the team works on a seperate branch in order to implement a new working feature for the application.
 
+# Prerequisites
+
+> 1. IntelliJ IDEA
+
+> 2. Docker must be installed
+
+> 3. Active GitHub account
+
+> 4. Travis Continuous Integration (CI) account.
+
 # How to build & run the application?
 
 > 1. Go to your current directory, wherever that may be using the command in the command line: > cd <your current directory>
@@ -258,7 +268,7 @@ The requirements that we had to write SQL queries for are:
 
 # Software Project Documentation
 
-### Connect to Database Method
+## Connect to Database Method
 
 > public void connect(String location)
 
@@ -270,7 +280,6 @@ The requirements that we had to write SQL queries for are:
 ### Parameters
 > String location: This identifies the location of where to connect to.
 
-
 ### Disconnect Method
 
 > public void disconnect()
@@ -278,7 +287,54 @@ The requirements that we had to write SQL queries for are:
 ### Description of Function
 > Disconnects from the database when no longer in use to prevent errors.
 
+### Method Implementation Screenshot
 <img width="469" alt="DisconnectMethod" src="https://user-images.githubusercontent.com/29733613/78162978-93397780-743f-11ea-9ff0-5e86f910fbef.png">
 
 ### Parameters
 > This method takes no parameters because its only function is to disconnect from the running process.
+
+# Get Countries By Population #
+
+### Description of Function ###
+
+> This function is responsible for retrieving all the countries from the countries table of the database and orders it by population in descending order.
+
+### Get Countries By Population Method Implementation ###
+
+> public ArrayList<Country> getAllCountriesOrderByPopulation(String ID);
+  
+### Method Parameters
+
+> String ID: The unique ID of the country that is specified by the user in order to retrieve the country with that ID.
+
+### Method Implementation Screenshot
+
+### SQL Query 
+<img width="944" alt="Requirement 1 - Get Countries by Population" src="https://user-images.githubusercontent.com/29733613/78450957-442b5680-767a-11ea-82c4-42d1a6672dc9.png">
+
+### SQL Query Results
+<img width="1153" alt="Requirement 1 - Data Results" src="https://user-images.githubusercontent.com/29733613/78451033-c61b7f80-767a-11ea-9ba9-1748bb8e2e5c.png">
+
+# Get Countries In A Continent By Largest Population
+
+### Description of Function ###
+
+> This function is responsible for executing an SQL query that returns the countries in a continent specified by our team in order to get the countries by largest population in that continent for the report.
+
+### Get Countries In A Continent By Largest Population Method Implementation
+
+> private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent); Continent is an enum
+  
+### Method Parameters
+
+> **Continent continent** -> This is a continent enum that stores a menu of continents
+
+### Method Implementation Screenshot
+
+### SQL Query
+
+<img width="980" alt="Requirement - 2 Query" src="https://user-images.githubusercontent.com/29733613/78451525-00d2e700-767e-11ea-83e7-c8b6ee5fe2cf.png">
+
+### SQL Query Results
+
+<img width="1121" alt="Requirement 2 - Data Results" src="https://user-images.githubusercontent.com/29733613/78451526-016b7d80-767e-11ea-82f4-cba12826d521.png">
