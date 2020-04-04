@@ -1,9 +1,16 @@
 package com.grouproject.sem;
 
+// Business Logic City Class
+// Purpose of Class: Stores data about the cities in world
+// Date of Last Modification: 04/04/2020
+// Modified by: Sabin Lungu
+// Any Errors? No
+
 public class City { // City class that represents data in the database
     public int id;
     public String name;
     public String countryCode;
+
     public String district;
     public int population;
 
@@ -11,7 +18,7 @@ public class City { // City class that represents data in the database
 
     }
 
-    public City(int id, String name, String countryCode, String district, int population) {
+    public City(int id, String name, String countryCode, String district, int population) { // City Constructor
         this.id = id;
         this.name = name;
         this.countryCode = countryCode;
@@ -58,8 +65,6 @@ public class City { // City class that represents data in the database
     public void setPopulation(int population) {
         this.population = population;
     }
-
-
 
     @Override
     public String toString() {
