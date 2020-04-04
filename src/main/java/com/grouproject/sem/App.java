@@ -1,5 +1,6 @@
 package com.grouproject.sem;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,17 +11,16 @@ import java.util.ArrayList;
 
 public class App {
 
-    protected Connection connection = null;
-    private static ArrayList<String> listOfRegions = null; // Set to null initially
+    public static Connection connection = null;
+    private static ArrayList<String> listOfRegions = new ArrayList<String>();
 
     public static void main(String[] args) {
         App app = new App(); // Creates a new instance of app
 
-        app.connect("localhost:33060"); // Connect to the database
-        listOfRegions = new ArrayList<String>();
+        connect(); // Connect to the database
         listOfRegions = app.extractRegions();
 
-        //1. app.printCountries(app.getAllCountriesOrderByPopulation());
+        app.printCountries(app.getAllCountriesOrderByPopulation("1"));
         //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
@@ -45,25 +45,8 @@ public class App {
         //23. app.printPopulation(app.getCityPopulationRegion());
         //24. app.printPopulation(app.getCityPopulationCountry());
 
-        app.disconnect();
+        disconnect();
         System.out.println("End of program.");
-
-        // VVV used for app deployment
-        // Create new Application
-        App a = new App();
-
-        // Connect to database
-        if (args.length < 1) // If the argum
-        {
-            a.connect("localhost:33060");
-        }
-        else
-        {
-            a.connect(args[0]); // Connect to the server
-        }
-
-        // Disconnect from database to prevent errors
-        a.disconnect();
     }
 
 
@@ -126,10 +109,14 @@ public class App {
         }
     }
 
-
-    public ArrayList<Country> getAllCountriesOrderByPopulation() { // Routine that gets the SQL query results for the first Requirement
-        String query = "SELECT * FROM country ORDER BY country.Population DESC"; // The query that selects all the data from the country table and order it by population
-        return extractCountryData(query);
+    public static void disconnect() { // Routine to disconnect from the DB
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                System.out.println("Error connecting to db");
+            }
+        }
     }
 
     public ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent) {  // Routine that gets the SQL query results for the first Requirement
@@ -281,8 +268,6 @@ public class App {
     }
 
 
-
-
     public ArrayList<City> getTopNCapitalCitiesInWorld(int n) { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city " +
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
@@ -299,7 +284,7 @@ public class App {
                 "LEFT JOIN country ON (country.Capital = city.ID) " +
                 "WHERE country.Code IS NOT NULL AND country.Continent = '" + continent +
                 "' ORDER BY city.population DESC" +
-                 " LIMIT " + n;
+                " LIMIT " + n;
 
         return extractCityData(theQuery);
     }
@@ -373,24 +358,32 @@ public class App {
         }
     }
 
-
-    public ArrayList<Country> extractCountryData(String query) { // This returns the required country fields
+    public static void connect() { // Method to connect the docker container to the database
         try {
-            ArrayList<Country> temp_countries = new ArrayList<Country>();
-            Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
-            ResultSet set = stmt.executeQuery(query);
-            while (set.next()) {
-                Country country = new Country(set.getString("Code"), set.getString("Name"), set.getString("Continent"),
-                        set.getString("Region"), set.getFloat("SurfaceArea"), set.getInt("IndepYear"),
-                        set.getInt("Population"), set.getFloat("LifeExpectancy"), set.getFloat("GNP"),
-                        set.getFloat("GNPOld"), set.getString("LocalName"), set.getString("GovernmentForm"),
-                        set.getString("HeadOfState"), set.getInt("Capital"), set.getString("Code2"));
-                temp_countries.add(country);
+            // Load Database driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not load SQL driver");
+            System.exit(-1);
+        }
+
+        int retries = 10;
+
+        for (int i = 0; i < retries; ++i) {
+            System.out.println("Connecting to database...");
+            try {
+                // Wait a bit for db to start
+                Thread.sleep(30000);
+                // Connect to database
+                connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
+                System.out.println("Successfully connected");
+                break;
+            } catch (SQLException sqle) {
+                System.out.println("Failed to connect to database attempt " + i);
+                System.out.println(sqle.getMessage());
+            } catch (InterruptedException ie) {
+                System.out.println("Thread interrupted? Should not happen.");
             }
-            return temp_countries;
-        } catch (SQLException exc) { // Catch exception
-            System.out.println(exc.toString());
-            return null;
         }
     }
 
@@ -400,13 +393,13 @@ public class App {
             Statement statement = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = statement.executeQuery(query);
             while (set.next()) {
-                 City city = new City(set.getInt("ID"), set.getString("Name"),
-                         set.getString("CountryCode"),
-                         set.getString("District"),
-                         set.getInt("Population"));
-                 tempCities.add(city);
-             }
-             return tempCities;
+                City city = new City(set.getInt("ID"), set.getString("Name"),
+                        set.getString("CountryCode"),
+                        set.getString("District"),
+                        set.getInt("Population"));
+                tempCities.add(city);
+            }
+            return tempCities;
         } catch (SQLException exc) {
             exc.printStackTrace();
             System.out.println(exc.getMessage());
@@ -420,10 +413,11 @@ public class App {
             String myQuery = "SELECT DISTINCT Region FROM country "; // Creates a list of regions for us to work with
             Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(myQuery);
-            while (set.next()) {
+            if (set.next()) {
                 String region = set.getString("Region");
                 temp_regions.add(region);
             }
+
             return temp_regions;
         } catch (SQLException exc) {
             System.out.println(exc.toString());
@@ -431,41 +425,31 @@ public class App {
         }
     }
 
-    public void disconnect() { // Routine to disconnect from the DB
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (Exception e) {
-                System.out.println("Error connecting to db");
-            }
-        }
+    public ArrayList<Country> getAllCountriesOrderByPopulation(String ID) { // Routine that gets the SQL query results for the first Requirement
+        String query = "SELECT * FROM country ORDER BY country.Population DESC"; // The query that selects all the data from the country table and order it by population
+        return extractCountryData(query);
     }
 
-    public void connect(String location) { // Method to connect the docker container to the database
+    public ArrayList<Country> extractCountryData(String query) { // This returns the required country fields
         try {
-            // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
-        }
+            ArrayList<Country> temp_countries = new ArrayList<Country>();
+            Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
+            ResultSet set = stmt.executeQuery(query);
 
-        int retries = 10;
-        for (int i = 0; i < retries; ++i) {
-            System.out.println("Connecting to database...");
-            try {
-                // Wait a bit for db to start
-                Thread.sleep(1000);
-                // Connect to database
-                connection = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
-                System.out.println("Successfully connected");
-                break;
-            } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " + i);
-                System.out.println(sqle.getMessage());
-            } catch (InterruptedException ie) {
-                System.out.println("Thread interrupted? Should not happen.");
+            while (set.next()) {
+
+                Country country = new Country(set.getString("Code"), set.getString("Name"), set.getString("Continent"),
+                        set.getString("Region"), set.getFloat("SurfaceArea"), set.getInt("IndepYear"),
+                        set.getInt("Population"), set.getFloat("LifeExpectancy"), set.getFloat("GNP"),
+                        set.getFloat("GNPOld"), set.getString("LocalName"), set.getString("GovernmentForm"),
+                        set.getString("HeadOfState"), set.getInt("Capital"), set.getString("Code2"));
+                temp_countries.add(country);
             }
+
+            return temp_countries;
+        } catch (SQLException exc) { // Catch exception
+            System.out.println(exc.toString());
+            return null;
         }
     }
 }
