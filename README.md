@@ -360,3 +360,25 @@ The requirements that we had to write SQL queries for are:
 ### SQL Query Results
 
 <img width="1186" alt="Requirement 3 Data Set" src="https://user-images.githubusercontent.com/29733613/78461545-f76b6e00-76c1-11ea-8c7c-4f24981e3a5d.png">
+
+# Get Top N Countries In Order By Population
+
+### Description of Function
+
+> This function is responsible for executing an SQL query that gives back a number of countries denoted by N in different continents where the population is ordered in descending order to make it easier to read in the report.
+
+### Method Implementation
+
+> private ArrayList<Country> getTopNCountriesOrderByPopulation(int n);
+  
+### Method Parameters
+
+> int n: The number of countries to display
+
+### Method Implementation Screenshot
+
+<img width="1194" alt="Requirement 4 - Method" src="https://user-images.githubusercontent.com/29733613/78461792-e58aca80-76c3-11ea-84b2-7bc795d6aa39.png">
+
+### SQL Query Results
+
+<img width="1109" alt="Requirement 4 - Data Set" src="https://user-images.githubusercontent.com/29733613/78461791-e3c10700-76c3-11ea-8a29-d211b394a0fb.png">
