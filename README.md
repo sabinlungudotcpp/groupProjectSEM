@@ -25,6 +25,16 @@ Therefore these 2 containers are tested to ensure that they run properly and com
 
 Finally as a team we are making use of different branches where each member of the team works on a seperate branch in order to implement a new working feature for the application.
 
+# Prerequisites
+
+> 1. IntelliJ IDEA
+
+> 2. Docker must be installed
+
+> 3. Active GitHub account
+
+> 4. Travis Continuous Integration (CI) account.
+
 # How to build & run the application?
 
 > 1. Go to your current directory, wherever that may be using the command in the command line: > cd <your current directory>
