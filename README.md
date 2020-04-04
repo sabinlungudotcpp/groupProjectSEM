@@ -338,3 +338,25 @@ The requirements that we had to write SQL queries for are:
 ### SQL Query Results
 
 <img width="1121" alt="Requirement 2 - Data Results" src="https://user-images.githubusercontent.com/29733613/78451526-016b7d80-767e-11ea-82f4-cba12826d521.png">
+
+# Get Countries In A Region By Largest Population
+
+### Description of Function ###
+
+> This function is responsible for executing an SQL query that selects all the data from the country table where the region is specified by the user and it orders the population in descending order
+
+# Method Implementation
+
+> private ArrayList<Country> getCountriesInRegionByLargestPopulation(String region);
+  
+# Method Parameters
+  
+  > String region: The region that will be specified by the user.
+  
+# Method Implementation Screenshot
+
+<img width="957" alt="Requirement 3 - Get Countries in a Region " src="https://user-images.githubusercontent.com/29733613/78461544-f5a1aa80-76c1-11ea-8533-4d095c94217e.png">
+
+# SQL Query Results
+
+<img width="1186" alt="Requirement 3 Data Set" src="https://user-images.githubusercontent.com/29733613/78461545-f76b6e00-76c1-11ea-8c7c-4f24981e3a5d.png">
