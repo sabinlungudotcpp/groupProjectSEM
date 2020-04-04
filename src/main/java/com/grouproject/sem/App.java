@@ -20,7 +20,7 @@ public class App {
         listOfRegions = app.extractRegions(); // Extracts the regions.
 
         app.printCountries(app.getAllCountriesOrderByPopulation("1")); // Method invoked to print the countries that are in order by population
-        //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
+        app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0)); // Gets the countries in a region by the largest population
         //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3)); // Gets the Top N countries where N is a value specified by the user where they are ordered by the population
         //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
@@ -111,6 +111,7 @@ public class App {
         if (connection != null) {
             try {
                 connection.close();
+
             } catch (Exception e) {
                 System.out.println("Error connecting to db");
             }
@@ -390,33 +391,40 @@ public class App {
             ArrayList<City> tempCities = new ArrayList<City>();
             Statement statement = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = statement.executeQuery(query);
+
             while (set.next()) {
+
                 City city = new City(set.getInt("ID"), set.getString("Name"),
                         set.getString("CountryCode"),
                         set.getString("District"),
                         set.getInt("Population"));
                 tempCities.add(city);
             }
+
+
             return tempCities;
-        } catch (SQLException exc) {
+        } catch (SQLException exc) { // Catch the exception
             exc.printStackTrace();
             System.out.println(exc.getMessage());
         }
-        return null;
+        return null; // Otherwise return nothing
     }
 
     private ArrayList<String> extractRegions() { // Returns a list of regions
         try {
+
             ArrayList<String> temp_regions = new ArrayList<String>();
+
             String myQuery = "SELECT DISTINCT Region FROM country "; // Creates a list of regions for us to work with
             Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(myQuery);
-            if (set.next()) {
-                String region = set.getString("Region");
-                temp_regions.add(region);
+
+            if (set.next()) { // If there are any more result sets
+                String region = set.getString("Region"); // Get the region
+                temp_regions.add(region); // Add it to the array list
             }
 
-            return temp_regions;
+            return temp_regions; // Return the regions from the array list
         } catch (SQLException exc) {
             System.out.println(exc.toString());
             return null;
