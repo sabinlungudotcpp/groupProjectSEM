@@ -283,7 +283,7 @@ The requirements that we had to write SQL queries for are:
 ### Parameters
 > This method takes no parameters because its only function is to disconnect from the running process.
 
-## Get Countries By Population ##
+# Get Countries By Population #
 
 ### Description of Function ###
 
