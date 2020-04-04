@@ -1,6 +1,11 @@
 package com.grouproject.sem;
 
-public class PopulationData {
+// Purpose of Class: To store the data about the population
+// Date of Last Modification: 04/04/2020
+// Author: Sabin Constantin Lungu
+// Any Bugs: False
+
+public class PopulationData { // Population Data Class
     private String name;
     private double total_population;
     private double livingInCities;
@@ -77,6 +82,7 @@ public class PopulationData {
         }
 
         PopulationData populationData = (PopulationData) theObject;
+
         return Double.compare(populationData.getTotal_population(), getTotal_population()) == 0 &&
                 Double.compare(populationData.getLivingInCities(), getLivingInCities()) == 0 &&
                 Float.compare(populationData.getPercentageCities(), getPercentageCities()) == 0 &&
