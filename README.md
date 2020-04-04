@@ -345,18 +345,18 @@ The requirements that we had to write SQL queries for are:
 
 > This function is responsible for executing an SQL query that selects all the data from the country table where the region is specified by the user and it orders the population in descending order
 
-## Method Implementation
+### Method Implementation
 
 > private ArrayList<Country> getCountriesInRegionByLargestPopulation(String region);
   
-## Method Parameters
+### Method Parameters
   
   > String region: The region that will be specified by the user.
   
-## Method Implementation Screenshot
+### Method Implementation Screenshot
 
 <img width="957" alt="Requirement 3 - Get Countries in a Region " src="https://user-images.githubusercontent.com/29733613/78461544-f5a1aa80-76c1-11ea-8533-4d095c94217e.png">
 
-## SQL Query Results
+### SQL Query Results
 
 <img width="1186" alt="Requirement 3 Data Set" src="https://user-images.githubusercontent.com/29733613/78461545-f76b6e00-76c1-11ea-8c7c-4f24981e3a5d.png">
