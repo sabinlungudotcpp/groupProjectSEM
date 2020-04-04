@@ -15,14 +15,14 @@ public class Country { // Country class
     public String localName;
     public String governmentForm;
     public String headOfState;
-    public int Capital;
+    public String countryCapital;
     public String code2;
 
     public Country() { // Default constructor
 
     }
 
-    public Country(String code, String name, String continent, String region, float surfaceArea, int indepYear, int population, float lifeExpectancy, float GNP, float GNPOld, String localName, String governmentForm, String headOfState, int capital, String code2) {
+    public Country(String code, String name, String continent, String region, float surfaceArea, int indepYear, int population, float lifeExpectancy, float GNP, float GNPOld, String localName, String governmentForm, String headOfState, String countryCapital, String code2) {
         this.code = code;
         this.name = name;
         this.continent = continent;
@@ -36,7 +36,7 @@ public class Country { // Country class
         this.localName = localName;
         this.governmentForm = governmentForm;
         this.headOfState = headOfState;
-        this.Capital = capital;
+        this.countryCapital = countryCapital;
         this.code2 = code2;
     }
 
@@ -144,12 +144,12 @@ public class Country { // Country class
         this.headOfState = headOfState;
     }
 
-    public int getCapital() {
-        return Capital;
+    public String getCapital() {
+        return this.countryCapital;
     }
 
-    public void setCapital(int capital) {
-        Capital = capital;
+    public void setCapital(String capital) {
+        this.countryCapital = countryCapital;
     }
 
     public String getCode2() {
@@ -160,39 +160,6 @@ public class Country { // Country class
         this.code2 = code2;
     }
 
-    /*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-
-            return true;
-        }
-
-        if (!(o instanceof Country)) {
-
-            return false;
-        }
-
-        Country country = (Country) o;
-        return Float.compare(country.getSurfaceArea(), getSurfaceArea()) == 0 &&
-                getIndepYear() == country.getIndepYear() &&
-                getPopulation() == country.getPopulation() &&
-                Float.compare(country.getLifeExpectancy(), getLifeExpectancy()) == 0 &&
-                Float.compare(country.getGNP(), getGNP()) == 0 &&
-                Float.compare(country.getGNPOld(), getGNPOld()) == 0 &&
-
-                getCapital() == country.getCapital() &&
-                getCode().equals(country.getCode()) &&
-                getName().equals(country.getName()) &&
-                getContinent().equals(country.getContinent()) &&
-                getRegion().equals( country.getRegion()) &&
-                Objects.equals(getLocalName(), country.getLocalName()) &&
-                Objects.equals(getGovernmentForm(), country.getGovernmentForm()) &&
-                Objects.equals(getHeadOfState(), country.getHeadOfState()) &&
-                Objects.equals(getCode2(), country.getCode2());
-    }
-
-     */
 
     @Override
     public String toString() {
@@ -210,7 +177,7 @@ public class Country { // Country class
                 ", localName='" + localName + '\'' +
                 ", governmentForm='" + governmentForm + '\'' +
                 ", headOfState='" + headOfState + '\'' +
-                ", Capital=" + Capital +
+                ", Capital=" + this.countryCapital +
                 ", code2='" + code2 + '\'' +
                 '}';
     }
