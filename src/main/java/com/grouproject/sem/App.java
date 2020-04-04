@@ -11,18 +11,18 @@ import java.util.ArrayList;
 public class App {
 
     public static Connection connection = null;
-    private static ArrayList<String> listOfRegions = new ArrayList<String>();
+    private static ArrayList<String> listOfRegions = new ArrayList<String>(); // An Array List of regions
 
     public static void main(String[] args) {
         App app = new App(); // Creates a new instance of app
 
         connect(); // Connect to the database
-        listOfRegions = app.extractRegions();
+        listOfRegions = app.extractRegions(); // Extracts the regions.
 
         app.printCountries(app.getAllCountriesOrderByPopulation("1")); // Method invoked to print the countries that are in order by population
         //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
-        //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
-        //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
+        //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0)); // Gets the countries in a region by the largest population
+        //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3)); // Gets the Top N countries where N is a value specified by the user where they are ordered by the population
         //5. app.printCountries(app.getTopNCountriesInAContinent(3, Continent.ASIA));
         //6. app.printCountries(app.getTopNCountriesInARegion(3, listOfRegions.get(0)));
         //7. app.printCities(app.getAllCitiesInWorld());
@@ -49,11 +49,11 @@ public class App {
 
 
     private void printCountries(ArrayList<Country> countries) { // Routine to print out the countries table, that returns nothing
-        Object[][] countryTable = new String[countries.size()][];
+        Object[][] countryTable = new String[countries.size()][]; // A 2-D array of objects to store the formatted output
 
         String[] header = new String[]{"Code", "Name", "Continent", "Region", "Capital", "Population"}; // Used to add headers to the output table
 
-        for (int i = 0; i < countries.size(); i++) { // Loop over the country
+        for (int i = 0; i < countries.size(); i++) { // Loop over the country. Time Complexity: O(n)
 
             // Adds country data to the output array
             countryTable[i] = new String[]{String.valueOf(countries.get(i).getCode()), countries.get(i).getName(),
@@ -63,13 +63,13 @@ public class App {
 
         System.out.format("%25s%25s%25s%25s%25s%25s\n", header); // Displays the table headers
 
-        for (final Object[] row : countryTable) {
+        for (final Object[] row : countryTable) { // Loop over the object array which is a constant and can't be modified
             System.out.format("%25s%25s%25s%25s%25s%25s\n", row); // Displays the table rows
         }
     }
 
     private void printCities(ArrayList<City> cities) { // Routine to print cities
-        Object[][] cityTable = new String[cities.size()][];
+        Object[][] cityTable = new String[cities.size()][]; // 2-D array to store the city table data
 
         String[] header = new String[]{"ID", "Name", "CountryCode", "District", "Population"}; // Used to add headers to the output table
 
@@ -125,11 +125,11 @@ public class App {
     }
 
     public ArrayList<Country> getTopNCountriesOrderByPopulation(int n) { // Routine that gets the SQL query results for the first Requirement
-        String myQuery = "SELECT * "
+        String myQuery = "SELECT * " // The SQL Query: Selects all the data from the country table and orders the population in descending order and limits the number by N
                 + "FROM country "
                 + "ORDER BY country.Population DESC "
                 + "LIMIT " + n;
-        return extractCountryData(myQuery);
+        return extractCountryData(myQuery); // Return the method call to extract the country data
     }
 
     public ArrayList<Country> getTopNCountriesInAContinent(int limit, Continent continent) { // Routine that gets the SQL query results for the first Requirement
