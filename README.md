@@ -299,8 +299,8 @@ The requirements that we had to write SQL queries for are:
 
 ### Method Implementation Screenshot
 
+### SQL Query 
 <img width="944" alt="Requirement 1 - Get Countries by Population" src="https://user-images.githubusercontent.com/29733613/78450957-442b5680-767a-11ea-82c4-42d1a6672dc9.png">
 
-<img width="907" alt="Requirement 1 - Data Results" src="https://user-images.githubusercontent.com/29733613/78450956-4392c000-767a-11ea-9972-f03c838cb579.png">
-
-### Method Im
+### SQL Query Results
+<img width="1153" alt="Requirement 1 - Data Results" src="https://user-images.githubusercontent.com/29733613/78451033-c61b7f80-767a-11ea-9ba9-1748bb8e2e5c.png">
