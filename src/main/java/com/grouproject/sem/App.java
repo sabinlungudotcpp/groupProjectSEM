@@ -1,11 +1,10 @@
 package com.grouproject.sem;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 
 // Authors of Project: Sabin Constantin Lungu, Taylor Courtney, Jonathan Sung and Sadeem Rashid
-// Date of Last Modified: 7/02/2020
+// Date of Last Modified: 04/04/2020
 // Purpose of Application: To write SQL queries embedded in Java code to retrieve the data required for the requirements.
 // Bugs?: Currently none
 
@@ -20,7 +19,7 @@ public class App {
         connect(); // Connect to the database
         listOfRegions = app.extractRegions();
 
-        app.printCountries(app.getAllCountriesOrderByPopulation("1"));
+        app.printCountries(app.getAllCountriesOrderByPopulation("1")); // Method invoked to print the countries that are in order by population
         //2. app.printCountries(app.getCountriesInContinentByLargestPopulation(com.grouproject.sem.Continent.NORTH_AMERICA));
         //3. app.getCountriesInRegionByLargestPopulation(listOfRegions.get(0));
         //4. app.printCountries(app.getTopNCountriesOrderByPopulation(3));
@@ -45,8 +44,7 @@ public class App {
         //23. app.printPopulation(app.getCityPopulationRegion());
         //24. app.printPopulation(app.getCityPopulationCountry());
 
-        disconnect();
-        System.out.println("End of program.");
+        disconnect(); // Disconnects from the database.
     }
 
 
