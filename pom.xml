@@ -48,7 +48,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <finalName>seMethods</finalName>
-                    <mainClass>com.napier.sem.App</mainClass>
+                    <mainClass>com.grouproject.sem.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>
