@@ -314,3 +314,27 @@ The requirements that we had to write SQL queries for are:
 
 ### SQL Query Results
 <img width="1153" alt="Requirement 1 - Data Results" src="https://user-images.githubusercontent.com/29733613/78451033-c61b7f80-767a-11ea-9ba9-1748bb8e2e5c.png">
+
+# Get Countries In A Continent By Largest Population
+
+### Description of Function ###
+
+> This function is responsible for executing an SQL query that returns the countries in a continent specified by our team in order to get the countries by largest population in that continent for the report.
+
+### Get Countries In A Continent By Largest Population Method Implementation
+
+> private ArrayList<Country> getCountriesInContinentByLargestPopulation(Continent continent); Continent is an enum
+  
+### Method Parameters
+
+> **Continent continent** -> This is a continent enum that stores a menu of continents
+
+### Method Implementation Screenshot
+
+### SQL Query
+
+<img width="980" alt="Requirement - 2 Query" src="https://user-images.githubusercontent.com/29733613/78451525-00d2e700-767e-11ea-83e7-c8b6ee5fe2cf.png">
+
+### SQL Query Results
+
+<img width="1121" alt="Requirement 2 - Data Results" src="https://user-images.githubusercontent.com/29733613/78451526-016b7d80-767e-11ea-82f4-cba12826d521.png">
