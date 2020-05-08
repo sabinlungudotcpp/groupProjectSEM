@@ -4,10 +4,10 @@ public class Country { // Country class
     public String code; // The country code
     public String name; // The country name
     
-    public String continent; // Continent enum
-    public String region;
+    public String continent; // The country continent
+    public String region; // The country region
     
-    public float surfaceArea;
+    public float surfaceArea; // Surface area of the country
     public int indepYear;
     public int population; // Stores the total population of the country
     
