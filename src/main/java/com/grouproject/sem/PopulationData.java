@@ -6,11 +6,13 @@ package com.grouproject.sem;
 // Any Bugs: False
 
 public class PopulationData { // Population Data Class
-    private String name;
+    private String name; // Population data name.
     private double total_population;
+    
     private double livingInCities;
-    private float percentageCities;
     private double notLivingInCities;
+    
+    private float percentageCities;
     private float percentageNotInCities;
 
     public PopulationData(String name, double total_population, double livingInCities, float percentageCities, double notLivingInCities, float percentageNotInCities) {
@@ -39,7 +41,7 @@ public class PopulationData { // Population Data Class
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -77,12 +79,12 @@ public class PopulationData { // Population Data Class
         }
 
         if (!(theObject instanceof PopulationData)) { // If the object is not an instance of population data
-
             return false; // Return false
         }
 
         PopulationData populationData = (PopulationData) theObject;
 
+        // Compares the objects routines
         return Double.compare(populationData.getTotal_population(), getTotal_population()) == 0 &&
                 Double.compare(populationData.getLivingInCities(), getLivingInCities()) == 0 &&
                 Float.compare(populationData.getPercentageCities(), getPercentageCities()) == 0 &&
