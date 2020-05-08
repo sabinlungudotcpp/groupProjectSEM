@@ -1,17 +1,20 @@
 package com.grouproject.sem;
 
-
 public class Country { // Country class
-    public String code;
-    public String name;
+    public String code; // The country code
+    public String name; // The country name
+    
     public String continent; // Continent enum
     public String region;
+    
     public float surfaceArea;
     public int indepYear;
     public int population;
+    
     public float lifeExpectancy;
     public float GNP;
     public float GNPOld;
+    
     public String localName;
     public String governmentForm;
     public String headOfState;
@@ -19,7 +22,7 @@ public class Country { // Country class
     public String code2;
 
     public Country() { // Default constructor
-
+        System.out.println("Inside default constructor");
     }
 
     public Country(String code, String name, String continent, String region, float surfaceArea, int indepYear, int population, float lifeExpectancy, float GNP, float GNPOld, String localName, String governmentForm, String headOfState, String countryCapital, String code2) {
@@ -49,23 +52,23 @@ public class Country { // Country class
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getContinent() {
-        return continent;
+    public String getContinent() { // Returns the continent
+        return this.continent;
     }
 
     public void setContinent(String continent) {
         this.continent = continent;
     }
 
-    public String getRegion() {
-        return region;
+    public String getRegion() { // Returns the region
+        return this.region;
     }
 
     public void setRegion(String region) {
