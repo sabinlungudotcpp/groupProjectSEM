@@ -26,15 +26,15 @@ public class City { // City class that represents data in the database
         this.population = population;
     }
 
-    public int getId() {
+    public int getId() { // Returns the City ID
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(int id) { // Sets the City ID
         this.id = id;
     }
 
-    public String getName() {
+    public String getName() { // Returns the City name
         return this.name;
     }
 
@@ -42,7 +42,7 @@ public class City { // City class that represents data in the database
         this.name = name;
     }
 
-    public String getCountryCode() {
+    public String getCountryCode() { // Returns the country code for the city
         return this.countryCode;
     }
 
@@ -58,7 +58,7 @@ public class City { // City class that represents data in the database
         this.district = district;
     }
 
-    public int getPopulation() {
+    public int getPopulation() { // Returns the city population
         return this.population
     }
 
