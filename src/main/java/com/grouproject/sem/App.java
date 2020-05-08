@@ -10,8 +10,11 @@ import java.util.ArrayList;
 
 public class App {
 
-    public static Connection connection = null;
+    public static Connection connection = null; // Connection is null initially.
+    private static int exitCode = -1;
     private static ArrayList<String> listOfRegions = new ArrayList<String>(); // An Array List of regions
+    private long sleepSeconds = 30000;
+    private int connectionRetries = 10;
 
     public static void main(String[] args) {
         App app = new App(); // Creates a new instance of app
@@ -51,28 +54,32 @@ public class App {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver"); // Load the driver.
-
-        } catch (ClassNotFoundException e) {
+        } 
+        
+        catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
-            System.exit(-1);
+            System.exit(exitCode);
         }
 
-        int retries = 10; // Number of tries to connect to the DB
-
-        for (int i = 0; i < retries; ++i) {
+        for (int i = 0; i < connectionRetries; ++i) { // Loop 100 times to try and connect to the database.
+            
             System.out.println("Connecting to database...");
+            
             try {
-                // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(sleepSeconds); // Wait for the Database to connect
                 // Connect to database
                 connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
 
-            } catch (SQLException sqle) {
+            } 
+           
+            catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
-            } catch (InterruptedException ie) {
+            } 
+            
+            catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
@@ -89,6 +96,7 @@ public class App {
             cityTable[i] = new String[]{String.valueOf(cities.get(i).getId()), cities.get(i).getName(),
                     cities.get(i).getCountryCode(), cities.get(i).getDistrict(), Integer.toString(cities.get(i).getPopulation())};
         }
+        
         System.out.println(cities.size());
         System.out.format("%25s%25s%25s%25s%25s\n", header); // Displays the table headers
 
@@ -97,7 +105,7 @@ public class App {
         }
     }
 
-    private void printPopulation(ArrayList<PopulationData> populationData) {
+    private void printPopulation(ArrayList<PopulationData> populationData) { // Routine to print the population output results in the form of a table
         Object[][] populationTable = new String[populationData.size()][];
 
         String[] header = new String[]{"Name", "Total Population", "City Population", "%", "Rural Population", "%"};  // Used to add headers to the output table
@@ -118,11 +126,13 @@ public class App {
     }
 
     public static void disconnect() { // Routine to disconnect from the DB
-        if (connection != null) {
+        if (connection != null) { // If there is a connection
             try {
-                connection.close();
+                connection.close(); // Close it.
 
-            } catch (Exception e) {
+            } 
+           
+            catch (Exception e) {
                 System.out.println("Error connecting to db");
             }
         }
@@ -253,7 +263,7 @@ public class App {
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE District = '" + theDistrict +
                 "' ORDER BY city.population DESC " +
-                "LIMIT " + theLimit;
+                "LIMIT " + theLimit; // Selects all the rows from the city table where the district is specified by the user and orders the population in descending order.
 
         return extractCityData(theQuery);
     }
@@ -378,14 +388,15 @@ public class App {
             Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(query);
 
-
             while (set.next()) { // Loop over the result set
                 PopulationData populationData = new PopulationData(set.getString(1), set.getDouble(2),set.getDouble(3),set.getFloat(4),set.getDouble(5),set.getFloat(6));
                 temp_population.add(populationData);
             }
 
             return temp_population;
-        } catch (SQLException exc) { // Catch exception
+        } 
+        
+        catch (SQLException exc) { // Catch exception
             System.out.println(exc.toString());
             return null;
         }
@@ -393,32 +404,35 @@ public class App {
 
     private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
         try {
-
+            
             ArrayList<City> tempCities = new ArrayList<City>();
             Statement statement = connection.createStatement(); // Creates on object which we will use to query the database with a database
-            ResultSet set = statement.executeQuery(query);
+            ResultSet set = statement.executeQuery(query); // Create a result set by executing the SQL query
 
-            while (set.next()) {
+            while (set.next()) { // Loop over the result set
 
-                City city = new City(set.getInt("ID"), set.getString("Name"),
+                City city = new City(set.getInt("ID"), set.getString("Name"), // A new city instance to store the results from the database.
                         set.getString("CountryCode"),
                         set.getString("District"),
                         set.getInt("Population"));
-                tempCities.add(city);
+                
+                tempCities.add(city); // Add the city instance to the array list
             }
-
-
-            return tempCities;
-        } catch (SQLException exc) { // Catch the exception
+            
+            return tempCities; // Return the temp cities array list
+        } 
+        
+        catch (SQLException exc) { // Catch the exception
             exc.printStackTrace();
             System.out.println(exc.getMessage());
         }
+        
         return null; // Otherwise return nothing
     }
 
     private ArrayList<String> extractRegions() { // Returns a list of regions
+        
         try {
-
             ArrayList<String> temp_regions = new ArrayList<String>();
 
             String myQuery = "SELECT DISTINCT Region FROM country "; // Creates a list of regions for us to work with
@@ -431,9 +445,11 @@ public class App {
             }
 
             return temp_regions; // Return the regions from the array list
-        } catch (SQLException exc) { // Catch the SQL exception
+        } 
+        
+        catch (SQLException exc) { // Catch the SQL exception
             System.out.println(exc.toString());
-            return null;
+            return null; // Return nothing
         }
     }
 
@@ -445,12 +461,12 @@ public class App {
 
     public ArrayList<Country> extractCountryData(String query) { // This returns the required country fields
         try {
+            
             ArrayList<Country> temp_countries = new ArrayList<Country>();
             Statement stmt = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = stmt.executeQuery(query);
 
             while (set.next()) {
-
                 Country country = new Country(set.getString("Code"), set.getString("Name"), set.getString("Continent"),
                         set.getString("Region"), set.getFloat("SurfaceArea"), set.getInt("IndepYear"),
                         set.getInt("Population"), set.getFloat("LifeExpectancy"), set.getFloat("GNP"),
@@ -460,7 +476,9 @@ public class App {
             }
 
             return temp_countries;
-        } catch (SQLException exc) { // Catch exception
+        }
+        
+        catch (SQLException exc) { // Catch exception
             System.out.println(exc.toString());
             return null;
         }
