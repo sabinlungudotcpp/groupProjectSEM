@@ -38,7 +38,7 @@ SELECT SUM(country.Population) AS World_Population FROM country;
 SELECT country.Continent, SUM(country.Population) AS Population FROM country
 WHERE country.Continent = 'Asia';
 
-SELECT country.Region, SUM(country.Population) AS Population FROM country
+SELECT country.Region, SUM(country.Population) AS Population FROM country -- Selects the country region, sums the population where the region is middle east.
 WHERE country.Region = 'Middle East';
 
 SELECT country.Name, country.Population AS Population FROM country
@@ -51,6 +51,7 @@ SELECT city.Name, city.Population AS Population FROM city
 WHERE city.Name = 'New York';
 
 SELECT SUM(country.Population) AS World_Population INTO @world_population FROM country;
+
 SELECT Language, SUM(ROUND((Population * Percentage/100), 0)) AS No_Speakers, ((SUM(ROUND((Population * Percentage/100), 0)))/@world_population)*100 AS 'Percentage of People in World Who Speak Language'
 FROM countrylanguage
 INNER JOIN country ON (country.Code = countrylanguage.CountryCode)
