@@ -7,14 +7,14 @@ package com.grouproject.sem;
 // Any Errors? No
 
 public class City { // City class that represents data in the database
-    public int id;
-    public String name;
-    public String countryCode;
-
+    public int id; // The City ID
+    public String name; // The City Name
+    
+    public String countryCode; // The country code for the city
     public String district;
-    public int population;
+    public int population; // The city population
 
-    public City() {
+    public City() { // City default constructor
 
     }
 
@@ -27,7 +27,7 @@ public class City { // City class that represents data in the database
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -35,7 +35,7 @@ public class City { // City class that represents data in the database
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -43,7 +43,7 @@ public class City { // City class that represents data in the database
     }
 
     public String getCountryCode() {
-        return countryCode;
+        return this.countryCode;
     }
 
     public void setCountryCode(String countryCode) {
@@ -51,7 +51,7 @@ public class City { // City class that represents data in the database
     }
 
     public String getDistrict() {
-        return district;
+        return this.district;
     }
 
     public void setDistrict(String district) {
@@ -59,7 +59,7 @@ public class City { // City class that represents data in the database
     }
 
     public int getPopulation() {
-        return population;
+        return this.population
     }
 
     public void setPopulation(int population) {
