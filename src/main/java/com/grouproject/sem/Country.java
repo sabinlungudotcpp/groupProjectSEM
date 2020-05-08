@@ -9,7 +9,7 @@ public class Country { // Country class
     
     public float surfaceArea;
     public int indepYear;
-    public int population;
+    public int population; // Stores the total population of the country
     
     public float lifeExpectancy;
     public float GNP;
@@ -17,6 +17,7 @@ public class Country { // Country class
     
     public String localName;
     public String governmentForm;
+    
     public String headOfState;
     public String countryCapital;
     public String code2;
@@ -76,7 +77,7 @@ public class Country { // Country class
     }
 
     public float getSurfaceArea() {
-        return surfaceArea;
+        return this.surfaceArea;
     }
 
     public void setSurfaceArea(float surfaceArea) {
@@ -84,7 +85,7 @@ public class Country { // Country class
     }
 
     public int getIndepYear() {
-        return indepYear;
+        return this.indepYear;
     }
 
     public void setIndepYear(int indepYear) {
@@ -92,7 +93,7 @@ public class Country { // Country class
     }
 
     public int getPopulation() {
-        return population;
+        return this.population;
     }
 
     public void setPopulation(int population) {
@@ -100,7 +101,7 @@ public class Country { // Country class
     }
 
     public float getLifeExpectancy() {
-        return lifeExpectancy;
+        return this.lifeExpectancy;
     }
 
     public void setLifeExpectancy(float lifeExpectancy) {
@@ -124,7 +125,7 @@ public class Country { // Country class
     }
 
     public String getLocalName() {
-        return localName;
+        return this.localName;
     }
 
     public void setLocalName(String localName) {
@@ -132,7 +133,7 @@ public class Country { // Country class
     }
 
     public String getGovernmentForm() {
-        return governmentForm;
+        return this.governmentForm;
     }
 
     public void setGovernmentForm(String governmentForm) {
@@ -140,7 +141,7 @@ public class Country { // Country class
     }
 
     public String getHeadOfState() {
-        return headOfState;
+        return this.headOfState;
     }
 
     public void setHeadOfState(String headOfState) {
@@ -156,16 +157,15 @@ public class Country { // Country class
     }
 
     public String getCode2() {
-        return code2;
+        return this.code2;
     }
 
     public void setCode2(String code2) {
         this.code2 = code2;
     }
 
-
     @Override
-    public String toString() {
+    public String toString() { // Routine to print all of the data.
         return "Country{" +
                 "code='" + code + '\'' +
                 ", name='" + name + '\'' +
