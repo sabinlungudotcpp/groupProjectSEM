@@ -11,10 +11,11 @@ import java.util.ArrayList;
 public class App {
 
     public static Connection connection = null; // Connection is null initially.
-    private static int exitCode = -1;
     private static ArrayList<String> listOfRegions = new ArrayList<String>(); // An Array List of regions
-    private long sleepSeconds = 30000;
-    private int connectionRetries = 10;
+    
+    private static int exitCode = -1; // Error exit code.
+    private long sleepSeconds = 30000; // Number of seconds to wait for the database to connect.
+    private int connectionRetries = 10; // 10 connection re-attempts
 
     public static void main(String[] args) {
         App app = new App(); // Creates a new instance of app
