@@ -130,10 +130,9 @@ public class App {
         if (connection != null) { // If there is a connection
             try {
                 connection.close(); // Close it.
-
             } 
            
-            catch (Exception e) {
+            catch (Exception e) { // Catch the exception
                 System.out.println("Error connecting to db");
             }
         }
@@ -171,6 +170,7 @@ public class App {
         String myQuery = "SELECT * FROM country "
                 + " WHERE Continent = '" + continent.getContinent()
                 + "' ORDER BY country.Population DESC ";
+        
         return extractCountryData(myQuery);
     }
 
@@ -179,7 +179,8 @@ public class App {
                 + "FROM country "
                 + "WHERE continent = '" + continent
                 + "' ORDER BY country.Population DESC "
-                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user
+                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user.
+        
         return extractCountryData(myQuery);
     }
 
@@ -202,6 +203,7 @@ public class App {
 
     private ArrayList<City> getAllCitiesInWorld() { // Routine to get all cities in a world
         String query = "SELECT * FROM city ORDER BY city.population DESC;";
+        
         return extractCityData(query);
     }
 
@@ -210,6 +212,7 @@ public class App {
                 " INNER JOIN country ON (city.CountryCode = country.code)" +
                 " WHERE Continent = '" + continent.getContinent() +
                 "' ORDER BY city.population DESC ";
+        
         return extractCityData(query);
     }
 
@@ -234,9 +237,9 @@ public class App {
     public ArrayList<City> getTopNCitiesInTheWorld(int theLimit) { // This routine gets all the cities in a region by passing in an input region from the user.
         String theQuery = "SELECT * FROM city " +
                 "ORDER BY city.population DESC " +
-                "LIMIT " + theLimit;
+                "LIMIT " + theLimit; // Select every city from the city table, orders it by population in descending order and limit the number of rows to return.
 
-        return extractCityData(theQuery);
+        return extractCityData(theQuery); // Invoke routine to return extract the city data
     }
 
     public ArrayList<City> getTopNCitiesInContinent(int theLimit, Continent continent) { // This routine gets all the cities in a region by passing in an input region from the user.
@@ -399,7 +402,7 @@ public class App {
         
         catch (SQLException exc) { // Catch exception
             System.out.println(exc.toString());
-            return null;
+            return null; // Return nothing otherwise.
         }
     }
 
