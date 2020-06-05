@@ -247,7 +247,7 @@ public class App {
                 "INNER JOIN country ON (city.countryCode = country.code)" +
                 "WHERE Continent = '" + continent +
                 "' ORDER BY city.population DESC " +
-                "LIMIT " + theLimit;
+                "LIMIT " + theLimit; // Select every row from the city table and JOIN the country table on the city table where the continent is specified by the user
 
         return extractCityData(theQuery);
     }
@@ -299,7 +299,6 @@ public class App {
 
         return extractCityData(theQuery);
     }
-
 
     public ArrayList<City> getTopNCapitalCitiesInWorld(int n) { // This routine gets all the cities in a region by passing in an input region from the user.
         String query = "SELECT * FROM city " +
@@ -409,7 +408,7 @@ public class App {
     private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
         try {
             
-            ArrayList<City> tempCities = new ArrayList<City>();
+            ArrayList<City> tempCities = new ArrayList<City>(); // A new array list of cities.
             Statement statement = connection.createStatement(); // Creates on object which we will use to query the database with a database
             ResultSet set = statement.executeQuery(query); // Create a result set by executing the SQL query
 
