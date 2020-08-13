@@ -53,7 +53,7 @@ public class App {
 
     public static void connect() { // Method to connect the docker container to the database
         try {
-            // Load Database driver
+            
             Class.forName("com.mysql.cj.jdbc.Driver"); // Load the driver.
         } 
         
@@ -67,15 +67,15 @@ public class App {
             System.out.println("Connecting to database...");
             
             try {
+                
                 Thread.sleep(sleepSeconds); // Wait for the Database to connect
-                // Connect to database
+                
                 connection = DriverManager.getConnection("jdbc:mysql://dbb:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
-
             } 
            
-            catch (SQLException sqle) {
+            catch (SQLException sqle) { // Catch an SQL Exception
                 System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             } 
@@ -127,7 +127,9 @@ public class App {
     }
 
     public static void disconnect() { // Routine to disconnect from the DB
+        
         if (connection != null) { // If there is a connection
+            
             try {
                 connection.close(); // Close it.
             } 
@@ -163,6 +165,7 @@ public class App {
                 + "FROM country "
                 + "ORDER BY country.Population DESC "
                 + "LIMIT " + n;
+        
         return extractCountryData(myQuery); // Return the method call to extract the country data
     }
 
@@ -189,7 +192,8 @@ public class App {
                 + "FROM country "
                 + "WHERE region = '" + region
                 + "' ORDER BY country.Population DESC "
-                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user
+                + "LIMIT " + limit; // Limit the number of data to a limit specified by the user.
+        
         return extractCountryData(myQuery);
     }
 
@@ -406,6 +410,7 @@ public class App {
     }
 
     private ArrayList<City> extractCityData(String query) { // Extracts the city data by using an SQL query
+        
         try {
             
             ArrayList<City> tempCities = new ArrayList<City>(); // A new array list of cities.
@@ -427,7 +432,6 @@ public class App {
         
         catch (SQLException exc) { // Catch the exception
             exc.printStackTrace();
-            System.out.println(exc.getMessage());
         }
         
         return null; // Otherwise return nothing
